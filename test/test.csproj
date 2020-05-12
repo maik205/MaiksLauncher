@@ -1,11 +1,86 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
-    <RootNamespace>MaiksMC</RootNamespace>
-    <AssemblyName>MaiksMc</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Platforms>x86;x64</Platforms>
+    <StartupObject>test.App</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="logo1.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
+    <PackageReference Include="ChangFeng.MojangSharpCore" Version="0.0.1" />
+    <PackageReference Include="Hawezo.MojangSharp" Version="0.5.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="logo1.png" />
+  </ItemGroup>
+
+
+    <ItemGroup>
+      <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
+      <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Reference Update="dotMCLauncher.Profiling">
+        <HintPath>mcLib\dotMCLauncher.Profiling.dll</HintPath>
+      </Reference>
+      <Reference Update="dotMCLauncher.Resourcing">
+        <HintPath>mcLib\dotMCLauncher.Resourcing.dll</HintPath>
+      </Reference>
+      <Reference Update="dotMCLauncher.Tests">
+        <HintPath>mcLib\dotMCLauncher.Tests.dll</HintPath>
+      </Reference>
+      <Reference Update="dotMCLauncher.Versioning">
+        <HintPath>mcLib\dotMCLauncher.Versioning.dll</HintPath>
+      </Reference>
+      <Reference Update="dotMCLauncher.Yggdrasil">
+        <HintPath>mcLib\dotMCLauncher.Yggdrasil.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <!-- TODO: These updates are currently required because CefSharp.Wpf specifies
+         <Private>false</Private>, which means these libraries will not be specified in
+         the .deps.json file, and so the CoreCLR wouldn't load these. -->
+      <Reference Update="CefSharp">
+        <Private>true</Private>
+      </Reference>
+      <Reference Update="CefSharp.Core">
+        <Private>true</Private>
+      </Reference>
+      <Reference Update="CefSharp.Wpf">
+        <Private>true</Private>
+      </Reference>
+    </ItemGroup>
+
+    <!-- Include CefSharp.BrowserSubprocess.Core so we can selfhost the BrowserSubProcess using our exe -->
+    <Choose>
+      <When Condition="'$(PlatformTarget)' == 'x64'">
+        <ItemGroup>
+          <Reference Include="CefSharp.BrowserSubprocess.Core">
+            <HintPath>$(CefSharpBrowserProcessCore64)</HintPath>
+            <Private>true</Private>
+          </Reference>
+        </ItemGroup>
+      </When>
+      <!-- x86, Win32 and AnyCPU -->
+      <Otherwise>
+        <ItemGroup>
+          <Reference Include="CefSharp.BrowserSubprocess.Core">
+            <HintPath>$(CefSharpBrowserProcessCore32)</HintPath>
+            <Private>true</Private>
+          </Reference>
+        </ItemGroup>
+      </Otherwise>
+    </Choose>
 </Project>

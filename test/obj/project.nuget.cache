@@ -1,8 +1,42 @@
 {
   "version": 2,
-  "dgSpecHash": "oNzzYRHWZJr8jtgG4FAiZ4KzpXSJLS2qeCyLBmD72HzgGAZmdJ5Im3qUEMUN4LwkKNh5pYP3cmDAt/uZaoE4ww==",
+  "dgSpecHash": "DW8zoPnZmvEjxn+PELfBzs7vmKKNYBfFbVUzBKMcNr3x/FcMMlixNuF/0wOVroHX+HX4RfkKcYdUrcxsiSvxUQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\meik\\source\\repos\\test\\test\\test.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "expectedPackageFiles": [
+    "C:\\Users\\meik\\.nuget\\packages\\cef.redist.x64\\79.1.36\\cef.redist.x64.79.1.36.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\cef.redist.x86\\79.1.36\\cef.redist.x86.79.1.36.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\cefsharp.common\\79.1.360\\cefsharp.common.79.1.360.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\cefsharp.wpf\\79.1.360\\cefsharp.wpf.79.1.360.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\changfeng.mojangsharpcore\\0.0.1\\changfeng.mojangsharpcore.0.0.1.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\hawezo.mojangsharp\\0.5.1\\hawezo.mojangsharp.0.5.1.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\system.windows.interactivity.wpf\\2.0.20525\\system.windows.interactivity.wpf.2.0.20525.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.0.3\\microsoft.netcore.app.host.win-x64.3.0.3.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.0.0\\microsoft.windowsdesktop.app.ref.3.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'Hawezo.MojangSharp 0.5.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "Hawezo.MojangSharp",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'System.Windows.Interactivity.WPF 2.0.20525' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "System.Windows.Interactivity.WPF",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    }
+  ]
 }

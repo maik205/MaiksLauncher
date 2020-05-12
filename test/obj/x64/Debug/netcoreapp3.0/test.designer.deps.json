@@ -1,0 +1,121 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.0": {
+      "cef.redist.x64/79.1.36": {},
+      "cef.redist.x86/79.1.36": {},
+      "CefSharp.Common/79.1.360": {
+        "dependencies": {
+          "cef.redist.x64": "79.1.36",
+          "cef.redist.x86": "79.1.36"
+        }
+      },
+      "CefSharp.Wpf/79.1.360": {
+        "dependencies": {
+          "CefSharp.Common": "79.1.360"
+        }
+      },
+      "ChangFeng.MojangSharpCore/0.0.1": {
+        "runtime": {
+          "lib/netcoreapp2.2/MojangSharpCore.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "Hawezo.MojangSharp/0.5.1": {
+        "dependencies": {
+          "Newtonsoft.Json": "12.0.3"
+        },
+        "runtime": {
+          "lib/MojangSharp.dll": {
+            "assemblyVersion": "0.45.6678.1621",
+            "fileVersion": "1.112.6678.1621"
+          }
+        }
+      },
+      "Newtonsoft.Json/12.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "12.0.0.0",
+            "fileVersion": "12.0.3.23909"
+          }
+        }
+      },
+      "System.Windows.Interactivity.WPF/2.0.20525": {
+        "runtime": {
+          "lib/net40/Microsoft.Expression.Interactions.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "2.0.20525.0"
+          },
+          "lib/net40/System.Windows.Interactivity.dll": {
+            "assemblyVersion": "4.0.0.0",
+            "fileVersion": "2.0.20525.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "cef.redist.x64/79.1.36": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BAkFrlP3DTEsf9GaH9RUAgK7EhdvwViBdakE2YolJS1Xsg6/e8UJ5xhpTHJ0IZV+EG+N5MPLG5iGoYFmIC0NdQ==",
+      "path": "cef.redist.x64/79.1.36",
+      "hashPath": "cef.redist.x64.79.1.36.nupkg.sha512"
+    },
+    "cef.redist.x86/79.1.36": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8nKwmwWEMx4QPmxOn50qLNYnfVV7QSy4p4yL/ZkBEfjwCP+heUHjtPvq79ZLkBUZSlSrt6amll2xqGccctKjSA==",
+      "path": "cef.redist.x86/79.1.36",
+      "hashPath": "cef.redist.x86.79.1.36.nupkg.sha512"
+    },
+    "CefSharp.Common/79.1.360": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-557XvPIHixQ4ipPHhGsTeCMtm8kbNICT2dRoYyjTiHkQo7jPOKJN69JmxLL8H0gWGV2SLlOv5ChzRD9rAJEf4w==",
+      "path": "cefsharp.common/79.1.360",
+      "hashPath": "cefsharp.common.79.1.360.nupkg.sha512"
+    },
+    "CefSharp.Wpf/79.1.360": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-K4shUXhU8toNl0YzEbOcNo9S4GFIAV7ppCvj/pBkpuIpgf1j8FRyX8ZCCKv/XQrkNL5Fe33J43JCgN2PREVu5w==",
+      "path": "cefsharp.wpf/79.1.360",
+      "hashPath": "cefsharp.wpf.79.1.360.nupkg.sha512"
+    },
+    "ChangFeng.MojangSharpCore/0.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qpk6utXBE8E0MQ6DUky8UGP3k2yJ/vEJZM07a395uOcfu282Kiied8JcMHORmTYVL3qZLUy2vgBstNN4m8xz9g==",
+      "path": "changfeng.mojangsharpcore/0.0.1",
+      "hashPath": "changfeng.mojangsharpcore.0.0.1.nupkg.sha512"
+    },
+    "Hawezo.MojangSharp/0.5.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HS/g7fgptrCWY7oCNFFVPU5/M63M3rJkxg16DqXqvRpcsKvejuZfuzVGoBoo8QMkocbMPgDjmDPJM3GefscvGA==",
+      "path": "hawezo.mojangsharp/0.5.1",
+      "hashPath": "hawezo.mojangsharp.0.5.1.nupkg.sha512"
+    },
+    "Newtonsoft.Json/12.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6mgjfnRB4jKMlzHSl+VD+oUc1IebOZabkbyWj2RiTgWwYPPuaK1H97G1sHqGwPlS5npiF5Q0OrxN1wni2n5QWg==",
+      "path": "newtonsoft.json/12.0.3",
+      "hashPath": "newtonsoft.json.12.0.3.nupkg.sha512"
+    },
+    "System.Windows.Interactivity.WPF/2.0.20525": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-0r+Le4E7hCm4zToUvBzjSUyTcuU3rFeoPa7JyTdWIzR/F7wH6+O/pWkjHIG40hIA0z1wvRdZayvoizA4wcK1dg==",
+      "path": "system.windows.interactivity.wpf/2.0.20525",
+      "hashPath": "system.windows.interactivity.wpf.2.0.20525.nupkg.sha512"
+    }
+  }
+}
