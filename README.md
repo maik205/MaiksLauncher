@@ -1,11 +1,10 @@
 # MaiksLauncher
 Custom Minecraft(R) launcher designed for low end systems
 This Project uses CmlLib.Core, made by AlphaBs
-Link to source: https://github.com/AlphaBs/CmlLib.Core/
-
+Link to source: https://github.com/AlphaBs/CmlLib.Core
 # Status
 
- - [ ] AccessToken get 
+ - [x] AccessToken get 
  - [ ] Minecraft Launch
  - [ ] Skins
  - [ ] Version selector
