@@ -30,8 +30,8 @@ namespace test
         {
             InitializeComponent();
         }
-        private string loginPass;
-        private string loginEmail;
+        public static string loginPass;
+        public static string loginEmail;
         
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -40,10 +40,15 @@ namespace test
         private void Password_TextChanged(object sender, TextChangedEventArgs e)
         {
             loginPass = Password.Password;
+            PasswordText.Content = loginPass;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            loginPass = Password.Password;
+            string accessToken = Core.GetAccessToken();
+            AccessValidator.Content = accessToken;
+            PasswordCheck.Content = Core.ErrorLog;
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
