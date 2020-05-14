@@ -13,15 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CefSharp.Wpf;
-using MojangSharpCore;
-using MojangSharpCore.Api;
-using MojangSharpCore.Endpoints;
-using MojangSharpCore.Responses;
 using System.IO;
 using Newtonsoft.Json;
-using static MojangSharpCore.Endpoints.Statistics;
-using static MojangSharpCore.Responses.ChallengesResponse;
-using static MojangSharpCore.Responses.NameHistoryResponse;
+using CmlLib;
+using CmlLib.Core;
+
 namespace test
 {
     /// <summary>
@@ -48,11 +44,6 @@ namespace test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AuthenticateResponse auth = new Authenticate(new Credentials() { Username = loginEmail , Password = loginPass }).PerformRequestAsync().Result;
-            if (auth.IsSuccess)
-            {
-                AccessValidator.Content = auth.AccessToken;
-            }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
