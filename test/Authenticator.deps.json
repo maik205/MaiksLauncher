@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Authenticator/1.0.0": {
+        "dependencies": {
+          "ChangFeng.MojangSharpCore": "0.0.1"
+        },
+        "runtime": {
+          "Authenticator.dll": {}
+        }
+      },
+      "ChangFeng.MojangSharpCore/0.0.1": {
+        "runtime": {
+          "lib/netcoreapp2.2/MojangSharpCore.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Authenticator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ChangFeng.MojangSharpCore/0.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-qpk6utXBE8E0MQ6DUky8UGP3k2yJ/vEJZM07a395uOcfu282Kiied8JcMHORmTYVL3qZLUy2vgBstNN4m8xz9g==",
+      "path": "changfeng.mojangsharpcore/0.0.1",
+      "hashPath": "changfeng.mojangsharpcore.0.0.1.nupkg.sha512"
+    }
+  }
+}

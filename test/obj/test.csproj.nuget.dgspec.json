@@ -47,9 +47,9 @@
               "target": "Package",
               "version": "[0.0.1, )"
             },
-            "Hawezo.MojangSharp": {
+            "CmlLib.Core": {
               "target": "Package",
-              "version": "[0.5.1, )"
+              "version": "[0.2.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",

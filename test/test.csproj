@@ -4,18 +4,22 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Platforms>x86;x64</Platforms>
+    <Platforms>x86;x64;AnyCPU</Platforms>
     <StartupObject>test.App</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <None Remove="logo1.png" />
+    <None Remove="MojangSharp.dll" />
+    <None Remove="MojangSharp.pdb" />
+    <None Remove="MojangSharp.xml" />
+    <None Remove="Newtonsoft.Json.dll" />
+    <None Remove="Newtonsoft.Json.xml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
     <PackageReference Include="ChangFeng.MojangSharpCore" Version="0.0.1" />
-    <PackageReference Include="Hawezo.MojangSharp" Version="0.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
@@ -27,6 +31,13 @@
     <ItemGroup>
       <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
       <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Reference Include="Authenticator">
+        <HintPath>Authenticator.dll</HintPath>
+      </Reference>
     </ItemGroup>
 
 

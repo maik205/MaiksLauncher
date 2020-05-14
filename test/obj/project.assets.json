@@ -44,16 +44,27 @@
           "lib/netcoreapp2.2/MojangSharpCore.dll": {}
         }
       },
-      "Hawezo.MojangSharp/0.5.1": {
+      "CmlLib.Core/0.2.0": {
         "type": "package",
         "dependencies": {
-          "Newtonsoft.Json": "10.0.3"
+          "LZMA-SDK": "19.0.0",
+          "Newtonsoft.Json": "12.0.3",
+          "SharpZipLib": "1.2.0"
         },
         "compile": {
-          "lib/MojangSharp.dll": {}
+          "lib/net45/CmlLib.dll": {}
         },
         "runtime": {
-          "lib/MojangSharp.dll": {}
+          "lib/net45/CmlLib.dll": {}
+        }
+      },
+      "LZMA-SDK/19.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/SevenZip.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/SevenZip.dll": {}
         }
       },
       "Newtonsoft.Json/12.0.3": {
@@ -63,6 +74,15 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "SharpZipLib/1.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll": {}
         }
       },
       "System.Windows.Interactivity.WPF/2.0.20525": {
@@ -735,16 +755,35 @@
         "lib/netcoreapp2.2/MojangSharpCore.dll"
       ]
     },
-    "Hawezo.MojangSharp/0.5.1": {
-      "sha512": "HS/g7fgptrCWY7oCNFFVPU5/M63M3rJkxg16DqXqvRpcsKvejuZfuzVGoBoo8QMkocbMPgDjmDPJM3GefscvGA==",
+    "CmlLib.Core/0.2.0": {
+      "sha512": "sRnGqw8t3HKztdXkeiC2VH9hS8ZjUZxAZL+mbBgBfOP4cJOs4LhBG54wx7SlL4hNMRD/TqxFctKNeIGUKfrwTw==",
       "type": "package",
-      "path": "hawezo.mojangsharp/0.5.1",
+      "path": "cmllib.core/0.2.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "hawezo.mojangsharp.0.5.1.nupkg.sha512",
-        "hawezo.mojangsharp.nuspec",
-        "lib/MojangSharp.dll"
+        "cmllib.core.0.2.0.nupkg.sha512",
+        "cmllib.core.nuspec",
+        "lib/net45/CmlLib.dll",
+        "lib/netcoreapp3.1/CmlLib.dll",
+        "pack.ps1"
+      ]
+    },
+    "LZMA-SDK/19.0.0": {
+      "sha512": "/4yPB/YNtttdbxmHifyNUw6rUiBqCCUgeuokXsWvM/X9CDXJq1eQdI9uVgNpJdrzAZhTIAqNzbOP7Z2ogZt+2g==",
+      "type": "package",
+      "path": "lzma-sdk/19.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "7z_rm01.jpg",
+        "lib/net20/SevenZip.dll",
+        "lib/net20/SevenZip.xml",
+        "lib/netstandard2.0/SevenZip.deps.json",
+        "lib/netstandard2.0/SevenZip.dll",
+        "lib/netstandard2.0/SevenZip.xml",
+        "lzma-sdk.19.0.0.nupkg.sha512",
+        "lzma-sdk.nuspec"
       ]
     },
     "Newtonsoft.Json/12.0.3": {
@@ -778,6 +817,23 @@
         "packageIcon.png"
       ]
     },
+    "SharpZipLib/1.2.0": {
+      "sha512": "zvWa/L02JHNatdtjya6Swpudb2YEHaOLHL1eRrqpjm71iGRNUNONO5adUF/9CHbSJbzhELW1UoH4NGy7n7+3bQ==",
+      "type": "package",
+      "path": "sharpziplib/1.2.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net45/ICSharpCode.SharpZipLib.dll",
+        "lib/net45/ICSharpCode.SharpZipLib.pdb",
+        "lib/net45/ICSharpCode.SharpZipLib.xml",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.dll",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.pdb",
+        "lib/netstandard2.0/ICSharpCode.SharpZipLib.xml",
+        "sharpziplib.1.2.0.nupkg.sha512",
+        "sharpziplib.nuspec"
+      ]
+    },
     "System.Windows.Interactivity.WPF/2.0.20525": {
       "sha512": "0r+Le4E7hCm4zToUvBzjSUyTcuU3rFeoPa7JyTdWIzR/F7wH6+O/pWkjHIG40hIA0z1wvRdZayvoizA4wcK1dg==",
       "type": "package",
@@ -798,7 +854,7 @@
     ".NETCoreApp,Version=v3.0": [
       "CefSharp.Wpf >= 79.1.360",
       "ChangFeng.MojangSharpCore >= 0.0.1",
-      "Hawezo.MojangSharp >= 0.5.1",
+      "CmlLib.Core >= 0.2.0",
       "Newtonsoft.Json >= 12.0.3",
       "System.Windows.Interactivity.WPF >= 2.0.20525"
     ]
@@ -849,9 +905,9 @@
             "target": "Package",
             "version": "[0.0.1, )"
           },
-          "Hawezo.MojangSharp": {
+          "CmlLib.Core": {
             "target": "Package",
-            "version": "[0.5.1, )"
+            "version": "[0.2.0, )"
           },
           "Newtonsoft.Json": {
             "target": "Package",
@@ -907,8 +963,8 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Hawezo.MojangSharp 0.5.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Hawezo.MojangSharp",
+      "message": "Package 'CmlLib.Core 0.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "CmlLib.Core",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.0"
       ]

@@ -13,17 +13,15 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using CefSharp.Wpf;
-using MojangSharp;
-using MojangSharp.Api;
-using MojangSharp.Endpoints;
-using MojangSharp.Responses;
+using MojangSharpCore;
+using MojangSharpCore.Api;
+using MojangSharpCore.Endpoints;
+using MojangSharpCore.Responses;
 using System.IO;
 using Newtonsoft.Json;
-using static MojangSharp.Endpoints.Statistics;
-using static MojangSharp.Responses.ChallengesResponse;
-using static MojangSharp.Responses.NameHistoryResponse;
-
-
+using static MojangSharpCore.Endpoints.Statistics;
+using static MojangSharpCore.Responses.ChallengesResponse;
+using static MojangSharpCore.Responses.NameHistoryResponse;
 namespace test
 {
     /// <summary>
@@ -50,19 +48,10 @@ namespace test
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AuthenticateResponse auth = new Authenticate(new Credentials() { Username = loginEmail, Password = loginPass }).PerformRequestAsync().Result;
-            if (auth.IsSuccess == true)
+            AuthenticateResponse auth = new Authenticate(new Credentials() { Username = loginEmail , Password = loginPass }).PerformRequestAsync().Result;
+            if (auth.IsSuccess)
             {
-                System.IO.File.WriteAllText(@"C:\Users\meik\TestFolder\WriteText.txt", auth.AccessToken);
-                Response v = new Validate(auth.AccessToken).PerformRequestAsync().Result;
-                if (v.IsSuccess == true)
-                    AccessValidator.Content ="Validated!";
-                else
-                    AccessValidator.Content ="Not validated.";
-            }
-            else
-            {
-                PasswordCheck.Content = auth.Error.Exception == null ? auth.Error.ErrorMessage : auth.Error.Exception.Message;
+                AccessValidator.Content = auth.AccessToken;
             }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)

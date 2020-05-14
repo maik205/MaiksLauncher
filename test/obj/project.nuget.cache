@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DW8zoPnZmvEjxn+PELfBzs7vmKKNYBfFbVUzBKMcNr3x/FcMMlixNuF/0wOVroHX+HX4RfkKcYdUrcxsiSvxUQ==",
+  "dgSpecHash": "gnssv2+jfEKEZLZGK7Gsr8tlMX5FLUmrQWVE9kjEjrG7HD7kWzVEAFw0qIgnQniDf2xTJN53+BG9mKnJanN11A==",
   "success": true,
   "projectFilePath": "C:\\Users\\meik\\source\\repos\\test\\test\\test.csproj",
   "expectedPackageFiles": [
@@ -9,8 +9,10 @@
     "C:\\Users\\meik\\.nuget\\packages\\cefsharp.common\\79.1.360\\cefsharp.common.79.1.360.nupkg.sha512",
     "C:\\Users\\meik\\.nuget\\packages\\cefsharp.wpf\\79.1.360\\cefsharp.wpf.79.1.360.nupkg.sha512",
     "C:\\Users\\meik\\.nuget\\packages\\changfeng.mojangsharpcore\\0.0.1\\changfeng.mojangsharpcore.0.0.1.nupkg.sha512",
-    "C:\\Users\\meik\\.nuget\\packages\\hawezo.mojangsharp\\0.5.1\\hawezo.mojangsharp.0.5.1.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\cmllib.core\\0.2.0\\cmllib.core.0.2.0.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\lzma-sdk\\19.0.0\\lzma-sdk.19.0.0.nupkg.sha512",
     "C:\\Users\\meik\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\meik\\.nuget\\packages\\sharpziplib\\1.2.0\\sharpziplib.1.2.0.nupkg.sha512",
     "C:\\Users\\meik\\.nuget\\packages\\system.windows.interactivity.wpf\\2.0.20525\\system.windows.interactivity.wpf.2.0.20525.nupkg.sha512",
     "C:\\Users\\meik\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.0.1\\microsoft.aspnetcore.app.ref.3.0.1.nupkg.sha512",
     "C:\\Users\\meik\\.nuget\\packages\\microsoft.netcore.app.ref\\3.0.0\\microsoft.netcore.app.ref.3.0.0.nupkg.sha512",
@@ -22,8 +24,8 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Hawezo.MojangSharp 0.5.1' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
-      "libraryId": "Hawezo.MojangSharp",
+      "message": "Package 'CmlLib.Core 0.2.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.0'. This package may not be fully compatible with your project.",
+      "libraryId": "CmlLib.Core",
       "targetGraphs": [
         ".NETCoreApp,Version=v3.0"
       ]

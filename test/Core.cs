@@ -6,5 +6,7 @@ namespace test
 {
     class Core
     {
+        public string abc;
+        
     }
 }

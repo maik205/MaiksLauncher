@@ -95,11 +95,10 @@ C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\App.g.cs
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test_MarkupCompile.cache
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\MainWindow.baml
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test.g.resources
-C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test.csproj.CoreCompileInputs.cache
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test.csproj.CopyComplete
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test.dll
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test.pdb
 C:\Users\meik\source\repos\test\test\obj\x64\Debug\netcoreapp3.0\test.genruntimeconfig.cache
 C:\Users\meik\source\repos\test\test\bin\x64\Debug\netcoreapp3.0\MojangSharpCore.dll
-C:\Users\meik\source\repos\test\test\bin\x64\Debug\netcoreapp3.0\MojangSharp.dll
 C:\Users\meik\source\repos\test\test\bin\x64\Debug\netcoreapp3.0\Newtonsoft.Json.dll
+C:\Users\meik\source\repos\test\test\bin\x64\Debug\netcoreapp3.0\Authenticator.dll

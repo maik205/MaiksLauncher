@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "test", "test\test.csproj", "{ED9B5611-8047-4F80-8B21-046D96CE10C2}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Authenticator", "Authenticator\Authenticator.csproj", "{97911E39-F542-42FF-9E30-3658A6AAEBBE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,7 +17,8 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Debug|x64.ActiveCfg = Debug|x64
 		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Debug|x64.Build.0 = Debug|x64
 		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Debug|x86.ActiveCfg = Debug|x64
@@ -25,6 +28,17 @@ Global
 		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Release|x64.Build.0 = Release|x64
 		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Release|x86.ActiveCfg = Release|x86
 		{ED9B5611-8047-4F80-8B21-046D96CE10C2}.Release|x86.Build.0 = Release|x86
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Debug|x64.Build.0 = Debug|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Debug|x86.Build.0 = Debug|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Release|x64.ActiveCfg = Release|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Release|x64.Build.0 = Release|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Release|x86.ActiveCfg = Release|Any CPU
+		{97911E39-F542-42FF-9E30-3658A6AAEBBE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

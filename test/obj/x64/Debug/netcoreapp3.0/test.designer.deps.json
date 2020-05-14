@@ -27,17 +27,6 @@
           }
         }
       },
-      "Hawezo.MojangSharp/0.5.1": {
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.3"
-        },
-        "runtime": {
-          "lib/MojangSharp.dll": {
-            "assemblyVersion": "0.45.6678.1621",
-            "fileVersion": "1.112.6678.1621"
-          }
-        }
-      },
       "Newtonsoft.Json/12.0.3": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -95,13 +84,6 @@
       "sha512": "sha512-qpk6utXBE8E0MQ6DUky8UGP3k2yJ/vEJZM07a395uOcfu282Kiied8JcMHORmTYVL3qZLUy2vgBstNN4m8xz9g==",
       "path": "changfeng.mojangsharpcore/0.0.1",
       "hashPath": "changfeng.mojangsharpcore.0.0.1.nupkg.sha512"
-    },
-    "Hawezo.MojangSharp/0.5.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-HS/g7fgptrCWY7oCNFFVPU5/M63M3rJkxg16DqXqvRpcsKvejuZfuzVGoBoo8QMkocbMPgDjmDPJM3GefscvGA==",
-      "path": "hawezo.mojangsharp/0.5.1",
-      "hashPath": "hawezo.mojangsharp.0.5.1.nupkg.sha512"
     },
     "Newtonsoft.Json/12.0.3": {
       "type": "package",
