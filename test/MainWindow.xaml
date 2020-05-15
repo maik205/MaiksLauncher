@@ -18,15 +18,14 @@
         </Grid.ColumnDefinitions>
         <TextBox x:Name="Email" HorizontalAlignment="Left" Margin="42,62,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1" Grid.Row="1" AllowDrop="True"/>
         <Label Content="Email:" HorizontalAlignment="Left" Margin="10,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.091,1.711" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <PasswordBox Height="18"  Margin="42,84,603,0" x:Name="Password" VerticalAlignment="Top" PasswordChar="*" Grid.Column="1" Grid.Row="1"/>
+        <PasswordBox Height="18"  Margin="42,87,588,0" x:Name="Password" VerticalAlignment="Top" PasswordChar="*" Grid.Column="1" Grid.Row="1"/>
         <Label Content="Password:" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.Row="1"/>
-        <CheckBox Content="Save password/email" HorizontalAlignment="Left" Margin="167,0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.197,0.637" Checked="CheckBox_Checked" Grid.Column="1" Grid.Row="1"/>
-        <Button Content="Launch" HorizontalAlignment="Left" Margin="176,82,0,0" VerticalAlignment="Top" Width="66" Grid.Column="1" Grid.Row="1" Click="Button_Click"/>
+        <CheckBox Content="Save password/email" HorizontalAlignment="Left" Margin="176,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.197,0.637" Checked="CheckBox_Checked" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
+        <Button Content="Launch" HorizontalAlignment="Left" Margin="194,82,0,0" VerticalAlignment="Top" Width="66" Grid.Column="1" Grid.Row="1" Click="Button_Click"/>
         <wpf:ChromiumWebBrowser x:Name="Browser" Address="maikpla.github.io" Margin="0,0,0,103" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
-        <Label x:Name="TestEmail" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="376,76,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="AccessValidator" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="267,75,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="PasswordCheck" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="376,50,0,0" Grid.Row="1" VerticalAlignment="Top"/>
-        <Label x:Name="PasswordText" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="521,61,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button x:Name="OpenLog" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="604,63,0,0" Grid.Row="1" VerticalAlignment="Top" Click="OpenLog_Click"/>
+        <Label x:Name="LoginSuccess" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="284,79,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="Lime"/>
+        <Label x:Name="LoginUnsuccess" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="284,79,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="Red"/>
 
     </Grid>
 </Window>

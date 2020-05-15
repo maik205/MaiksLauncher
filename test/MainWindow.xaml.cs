@@ -17,6 +17,7 @@ using System.IO;
 using Newtonsoft.Json;
 using CmlLib;
 using CmlLib.Core;
+using MaiksLauncher;
 
 namespace test
 {
@@ -40,20 +41,35 @@ namespace test
         private void Password_TextChanged(object sender, TextChangedEventArgs e)
         {
             loginPass = Password.Password;
-            PasswordText.Content = loginPass;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             loginPass = Password.Password;
-            string accessToken = Core.GetAccessToken();
-            AccessValidator.Content = accessToken;
-            PasswordCheck.Content = Core.ErrorLog;
+            var p = new Core();
+            var session = p.Login();
+            if (session != null)
+            {
+                p.start(session);
+                LoginSuccess.Content = "Login Successful!";
+                LoginUnsuccess.Content = "";
+            }
+            else
+            {
+                LoginUnsuccess.Content = "Login Unsuccessful! Please check your email/password";
+                LoginSuccess.Content = "";
+            }
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             loginEmail = Email.Text;
-            TestEmail.Content = loginEmail;
+        }
+        public static Logger LoggerMain() { return null; }
+
+        private void OpenLog_Click(object sender, RoutedEventArgs e)
+        {
+            Logger loggerwindow = new Logger();
+            loggerwindow.Show();
         }
     }
 }
