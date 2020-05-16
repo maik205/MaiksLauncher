@@ -36,7 +36,7 @@
                     <wpf:ChromiumWebBrowser x:Name="Browser" Address="maikpla.github.io" Margin="0,0,36,0" Grid.ColumnSpan="2"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem Header="Settings">
                 <Grid>
                     <TextBox x:Name="CustomMCDir" HorizontalAlignment="Left" Margin="130,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="637"/>
                     <Label Content="Minecraft Directory:" Margin="10,33,664,231"/>
@@ -56,7 +56,6 @@
         <ComboBox x:Name="LauncherProfiles" Grid.Column="1" HorizontalAlignment="Left" Margin="193,62,0,0" Grid.Row="1" VerticalAlignment="Top" Width="82" Height="19" SelectionChanged="ComboBox_SelectionChanged">
 
         </ComboBox>
-        <Label x:Name="ForgeVersion" Content="Label" Grid.Column="1" HorizontalAlignment="Left" Margin="322,58,0,0" Grid.Row="1" VerticalAlignment="Top" Width="202"/>
 
     </Grid>
 </Window>
