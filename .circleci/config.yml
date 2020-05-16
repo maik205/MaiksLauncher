@@ -9,4 +9,4 @@
     
      steps:
        - checkout
-       - run: dotnet build -c Release -r win-x64
+       - run: dotnet publish -c Release /p:Platform="x86"
