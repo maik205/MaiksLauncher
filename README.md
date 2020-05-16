@@ -5,8 +5,8 @@ Link to source: https://github.com/AlphaBs/CmlLib.Core
 # Status
 
  - [x] AccessToken get 
- - [ ] Minecraft Launch
+ - [x] Minecraft Launch
  - [ ] Skins
- - [ ] Version selector
+ - [x] Version selector
  - [ ] Account Info Saver
 - And many more that i don't remember right now

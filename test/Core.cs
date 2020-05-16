@@ -77,9 +77,9 @@ namespace test
                 Session = session,
             };
             log.Update("[STUBBED] Input version: ");
-            var process = launcher.CreateProcess("1.8.9", launchOptions);
+            var process = launcher.CreateProcess(MainWindow.versionSelected , launchOptions);
 
-            log.Update("[Game] Launch Arguments:" + process.StartInfo.Arguments);
+            log.Update("[Game] Launch Arguments: " + process.StartInfo.Arguments);
             process.Start();
         }
         int nextline = -1;

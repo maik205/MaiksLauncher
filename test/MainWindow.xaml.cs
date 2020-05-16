@@ -26,10 +26,20 @@ namespace test
     /// </summary>
     public partial class MainWindow : Window
     {
+        public static string versionSelected;
+        public static string finalForgeVersion;
+        
 
         public MainWindow()
         {
             InitializeComponent();
+            // Get the versions for The ComboBox
+            var McPath = Minecraft.GetOSDefaultPath();
+            var Launcher = new CMLauncher(McPath);         
+            foreach (var item in Launcher.UpdateProfiles())
+            {
+                LauncherProfiles.Items.Add(item); 
+            }
         }
         public static string loginPass;
         public static string loginEmail;
@@ -47,7 +57,9 @@ namespace test
         {
             loginPass = Password.Password;
             var p = new Core();
+            
             var session = p.Login();
+            
             if (session != null)
             {
                 p.start(session);
@@ -70,6 +82,19 @@ namespace test
         {
             Logger loggerwindow = new Logger();
             loggerwindow.Show();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            versionSelected = LauncherProfiles.SelectedItem.ToString();
+            
+                // weird behaviour but fixed
+                char[] versionSelectedChar = versionSelected.ToCharArray();
+                versionSelectedChar = versionSelectedChar.Skip(1).ToArray();
+                string fixedVersionSlected = new string(versionSelectedChar);
+                versionSelected = fixedVersionSlected;
+            
+            
         }
     }
 }
