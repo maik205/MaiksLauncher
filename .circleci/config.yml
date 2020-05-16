@@ -9,4 +9,4 @@
     
      steps:
        - checkout
-       - run: dotnet build -r win-x64
+       - run: dotnet build -c Release -r win-x64
