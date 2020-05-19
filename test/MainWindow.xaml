@@ -23,7 +23,7 @@
         <CheckBox Content="Save password/email" HorizontalAlignment="Left" Margin="176,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.197,0.637" Checked="CheckBox_Checked" Grid.Column="1" Grid.Row="1" Visibility="Hidden"/>
         <Button Content="Launch" HorizontalAlignment="Left" Margin="201,87,0,0" VerticalAlignment="Top" Width="66" Grid.Column="1" Grid.Row="1" Click="Button_Click"/>
 
-        <Button x:Name="OpenLog" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Margin="604,63,0,0" Grid.Row="1" VerticalAlignment="Top" Click="OpenLog_Click"/>
+        <Button x:Name="OpenLog" Content="Open Logger" Grid.Column="1" Margin="593,63,0,53" Grid.Row="1" Click="OpenLog_Click" Width="91"/>
         <Label x:Name="LoginSuccess" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="284,79,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="Lime"/>
         <Label x:Name="LoginUnsuccess" Content="" Grid.Column="1" HorizontalAlignment="Left" Margin="284,79,0,0" Grid.Row="1" VerticalAlignment="Top" Foreground="Red"/>
         <TabControl Grid.ColumnSpan="2" Margin="0,0,0,97" Grid.RowSpan="2">
