@@ -13,6 +13,6 @@
        
        - run: 
           name: Compress Artifacts
-          command: tar -cvf MaiksLauncher.tar C:\Users\circleci\project\test\bin\x86\Release\netcoreapp3.0\publish\ 
+          command: tar -cvf MaiksLauncher.tar C:\Users\circleci\project\test\bin\x86\Release\netcoreapp3.0\publish\
        - store_artifacts: 
            path: MaiksLauncher.tar
