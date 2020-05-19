@@ -14,6 +14,7 @@
     <None Remove="MojangSharp.xml" />
     <None Remove="Newtonsoft.Json.dll" />
     <None Remove="Newtonsoft.Json.xml" />
+    <None Remove="Steve.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,9 +32,7 @@
 
 
     <ItemGroup>
-      <Reference Include="Authenticator">
-        <HintPath>Authenticator.dll</HintPath>
-      </Reference>
+      <Resource Include="Steve.png" />
     </ItemGroup>
 
 

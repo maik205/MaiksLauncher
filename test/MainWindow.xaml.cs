@@ -28,6 +28,7 @@ namespace test
     {
         public static string versionSelected;
         public static string finalForgeVersion;
+        public static bool ifShowVersions = false;
         
 
         public MainWindow()
@@ -62,12 +63,15 @@ namespace test
             
             if (session != null)
             {
+                Core.LoggerUpdate("[Auth] Login successful");
                 p.start(session);
                 LoginSuccess.Content = "Login Successful!";
                 LoginUnsuccess.Content = "";
             }
             else
             {
+                Core.LoggerUpdate("[Auth] Login unsuccessful");
+
                 LoginUnsuccess.Content = "Login Unsuccessful! Please check your email/password";
                 LoginSuccess.Content = "";
             }
@@ -80,8 +84,7 @@ namespace test
 
         private void OpenLog_Click(object sender, RoutedEventArgs e)
         {
-            Logger loggerwindow = new Logger();
-            loggerwindow.Show();
+            Core.openLogger();
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -90,11 +93,21 @@ namespace test
             
                 // weird behaviour but fixed
                 char[] versionSelectedChar = versionSelected.ToCharArray();
-                versionSelectedChar = versionSelectedChar.Skip(1).ToArray();
+                if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
                 string fixedVersionSlected = new string(versionSelectedChar);
                 versionSelected = fixedVersionSlected;
             
             
+        }
+
+        private void CheckBox_Checked_1(object sender, RoutedEventArgs e)
+        {
+            ifShowVersions = true;
+        }
+
+        private void ifShowVersion_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ifShowVersions = false;
         }
     }
 }

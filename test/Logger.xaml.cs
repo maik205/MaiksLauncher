@@ -24,15 +24,7 @@ namespace MaiksLauncher
         public Logger()
         {
             InitializeComponent();
-        }
-        
-        public void Update(string updateText)
-        {
-            Log.Text += updateText + Environment.NewLine;
-        }
-        public void UpdateNoNewLine(string updateText)
-        {
-            Log.Text += updateText;
+            Log.Text += Environment.NewLine;
         }
     }
 }

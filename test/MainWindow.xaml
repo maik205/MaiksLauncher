@@ -6,7 +6,7 @@
         xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         
         mc:Ignorable="d"
-        Title="MaiksLauncher" Height="419" Width="800" ResizeMode="NoResize">
+        Title="MaiksLauncher" Height="419" Width="800" ResizeMode="NoResize" Icon="/Steve.png">
     <Grid Margin="0,0,0,-16">
         <Grid.RowDefinitions>
             <RowDefinition Height="282*"/>
@@ -48,6 +48,7 @@
                     <Label Content="Log save folder:" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top"/>
                     <Label Content="&lt;empty&gt;" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top"/>
                     <Label Content="&lt;empty&gt;" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ifShowVersion" x:FieldModifier="public" Content="Show Minecraft versions in log" HorizontalAlignment="Left" Margin="21,226,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked_1" Unchecked="ifShowVersion_Unchecked"/>
 
 
                 </Grid>

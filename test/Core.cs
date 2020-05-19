@@ -5,22 +5,35 @@ using System.Text;
 using CmlLib;
 using CmlLib.Core;
 using MaiksLauncher;
+using System.ComponentModel;
 
 namespace test
 {
     class Core
     {
-        public static string ErrorLog;
+        // initialize the logger
+        public static Logger MainLoggerWindow = new Logger();
+        // strings
         static string accessToken;
-        
-        
+        // settings
+        public static int maxRamMB;
+
+        public static void openLogger()
+        {
+            MainLoggerWindow.Show();
+        }
+        private void LoggerWindow_Closing(object sender, CancelEventArgs e)
+        {
+            MainLoggerWindow.LoggerWindow.Hide();
+        }
         public static string GetAccessToken()
         {
+            
            
             var p = new Core();
             var session = p.Login();
             var log = new Logger();
-            log.Update("[Auth] Started getting access token");
+            LoggerUpdate("[Auth] Started getting access token");
             return accessToken;
             
         }
@@ -43,10 +56,10 @@ namespace test
                 session = login.Authenticate(MainWindow.loginEmail, MainWindow.loginPass);
                 if (session.Result != MLoginResult.Success)
                 {
-                    log.Update("[Auth]" + "Unsuccessful Login");
+                    LoggerUpdate("[Auth]" + "Unsuccessful Login");
                     return null;
                 }
-                else { log.Update("[Auth] Successful Login"); }
+                else { LoggerUpdate("[Auth] Successful Login"); }
                 accessToken = session.AccessToken;
             }
             else
@@ -64,22 +77,26 @@ namespace test
             // ignore 2 errors
             launcher.ProgressChanged += Downloader_ChangeProgress;
             launcher.FileChanged += Downloader_ChangeFile;
-            log.Update("[Game] Initialized in " + launcher.Minecraft.path);
+            LoggerUpdate("[Game] Initialized in " + launcher.Minecraft.path);
             launcher.UpdateProfiles();
-            log.UpdateNoNewLine("Versions available: ");
-            foreach (var item in launcher.Profiles)
+            if (MainWindow.ifShowVersions = true)
             {
-                log.UpdateNoNewLine(item.Name + " ");
+                LoggerUpdateNoNewLine("Versions available: ");
+
+                foreach (var item in launcher.Profiles)
+                {
+                    LoggerUpdateNoNewLine(item.Name + " ");
+                }
             }
             var launchOptions = new MLaunchOption
             {
-                MaximumRamMb = 1024,
+                MaximumRamMb = 2048,
                 Session = session,
             };
-            log.Update("[STUBBED] Input version: ");
+            LoggerUpdate("[STUBBED] Input version: ");
             var process = launcher.CreateProcess(MainWindow.versionSelected , launchOptions);
 
-            log.Update("[Game] Launch Arguments: " + process.StartInfo.Arguments);
+            LoggerUpdate("[Game] Launch Arguments: " + process.StartInfo.Arguments);
             process.Start();
         }
         int nextline = -1;
@@ -103,6 +120,25 @@ namespace test
             {
                 
             }
+        }
+        public static void LoggerUpdate(string UpdateText)
+        {
+            MainLoggerWindow.Log.Text += UpdateText + Environment.NewLine;
+        }
+        public static void LoggerUpdateNoNewLine(string UpdateText)
+        {
+            MainLoggerWindow.Log.Text += UpdateText;
+        }
+        public static void LoggerUpdate(string UpdateText, string Color)
+        {
+            if (Color == "red")
+            {
+                
+            }
+        }
+        public static void LoggerUpdateNoNewLine(string UpdateText, string Color)
+        {
+            MainLoggerWindow.Log.Text += UpdateText;
         }
     }
         
