@@ -89,5 +89,21 @@ namespace MaiksLauncher.GUI
         {
             ifShowVersions = false;
         }
+        private bool tg = false;
+        private void toggle(object sender, RoutedEventArgs e)
+        {
+            if (tg == false)
+            {
+                TestG.Visibility = Visibility.Hidden;
+                TestG.Opacity = 0;
+                tg = true;
+            }
+            else
+            {
+                TestG.Visibility = Visibility.Visible;
+                TestG.Opacity = 100;
+                tg = false;
+            }
+        }
     }
 }

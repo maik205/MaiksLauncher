@@ -38,7 +38,7 @@ namespace MaiksLauncher
 
         private CMLauncher launcher;
         private string SelectedVersion;
-        private int CurrentGrid;
+        private int CurrentGrid = 0;
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -56,10 +56,8 @@ namespace MaiksLauncher
 
         private void LaunchClick(object sender, RoutedEventArgs e)
         {
-<<<<<<< HEAD
             var session = new MSession (Username, accessToken, userUUID);
-=======
->>>>>>> 815ac0a0fec702d93226d0ba16af1483f87dae2f
+
             var th = new Thread(new ThreadStart(delegate
             {
                 string selectedver = "";
@@ -128,83 +126,83 @@ namespace MaiksLauncher
 
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
         {
-            PlayerInfo.Opacity = 100;
+            PlayerInfo.Visibility = Visibility.Visible;
             PlayerInfoButton.IsEnabled = false;
             if (CurrentGrid == 0)
-            {  Home.Opacity = 0; HomeButton.IsEnabled = true;}
+            {  Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true;  }
             else if (CurrentGrid == 2)
-            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true;}
             else if (CurrentGrid == 4)
-            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true;}
             CurrentGrid = 1;
 
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
         {
-            Information.Opacity = 100;
+            Information.Visibility = Visibility.Visible;
             InformationButton.IsEnabled = false;
             if (CurrentGrid == 0)
-            { Home.Opacity = 0; HomeButton.IsEnabled = true; }
+            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true;}
             else if (CurrentGrid == 1)
-            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true;  }
             else if (CurrentGrid == 4)
-            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true;}
             CurrentGrid = 2;
         }
 
         private void ServerStatusClick(object sender, RoutedEventArgs e)
         {
-            Status.Opacity = 100;
+            Status.Visibility = Visibility.Visible;
             ServerStatusButton.IsEnabled = false;
             if (CurrentGrid == 3)
-            { Home.Opacity = 0; HomeButton.IsEnabled = true; }
+            { Home.Visibility = Visibility.Hidden;  HomeButton.IsEnabled = true; }
             else if (CurrentGrid == 1)
-            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 2)
-            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
             else if (CurrentGrid == 4)
-            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
-            CurrentGrid = 1;
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
+            CurrentGrid = 3;
         }
 
         private void SettingsClick(object sender, RoutedEventArgs e)
         {
-            Settings.Opacity = 100;
+            Settings.Visibility = Visibility.Visible;
             SettingsButton.IsEnabled = false;
             if (CurrentGrid == 0)
-            { Home.Opacity = 0; HomeButton.IsEnabled = true; }
+            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true;  }
             else if (CurrentGrid == 1)
-            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 2)
-            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
-            CurrentGrid = 1;
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true;}
+            CurrentGrid = 4;
         }
-
         private void HomeClick(object sender, RoutedEventArgs e)
         {
-            PlayerInfo.Opacity = 100;
-            PlayerInfoButton.IsEnabled = false;
+            Home.Visibility = Visibility.Visible;
+            HomeButton.IsEnabled = false;
             if (CurrentGrid == 1)
-            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 2)
-            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true; }
             else if (CurrentGrid == 4)
-            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
-            CurrentGrid = 1;
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
+            CurrentGrid = 0;
         }
 
         private void InvalidateSessionClick(object sender, RoutedEventArgs e)
         {
 
         }
+
     }
 }

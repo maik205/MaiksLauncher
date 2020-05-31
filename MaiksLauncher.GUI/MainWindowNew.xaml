@@ -89,7 +89,7 @@
         <Ellipse HorizontalAlignment="Left" Height="86" Margin="1458,16,0,0" VerticalAlignment="Top" Width="86" Fill="White" Grid.RowSpan="2" Grid.Column="1"/>
         <Button
   Style="{StaticResource MaterialDesignFloatingActionButton}"
-  x:Name="SettingsButton" ToolTip="Settings" Margin="868,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" BorderBrush="{x:Null}" Background="{x:Null}">
+  x:Name="SettingsButton" ToolTip="Settings" Margin="868,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" BorderBrush="{x:Null}" Background="{x:Null}" Click="SettingsClick">
             <materialDesign:PackIcon
                 Kind="Cog"
     
@@ -104,7 +104,7 @@
         <Button
             x:Name="ServerStatusButton"
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            ToolTip="Server Status" Margin="822,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            ToolTip="Server Status" Margin="822,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="ServerStatusClick">
             <materialDesign:PackIcon
                 Kind="Dns"
                 Height="24"
@@ -112,7 +112,7 @@
         </Button>
         <Button
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            x:Name="SkinButton" ToolTip="Skins" Margin="732,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            x:Name="PlayerInfoButton" ToolTip="Skins" Margin="732,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="PlayerInfoClick">
             <materialDesign:PackIcon
                 
                 Kind="Face"
@@ -122,7 +122,7 @@
         <Button
             x:Name="InformationButton"
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            ToolTip="Information" Margin="778,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            ToolTip="Information" Margin="778,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="InfoClick">
             <materialDesign:PackIcon
                 Kind="Information"
                 Height="24"
@@ -133,7 +133,7 @@
             x:Name="HomeButton"
             Style="{StaticResource MaterialDesignFloatingActionButton}"
             IsEnabled="False"
-            ToolTip="Home" Margin="688,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}">
+            ToolTip="Home" Margin="688,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="HomeClick">
             <materialDesign:PackIcon
                 Kind="Home"
                 Height="24"
@@ -156,13 +156,13 @@
             </ComboBox>
             <Label x:Name="Error" Content="" HorizontalAlignment="Left" Height="59" Margin="75,375,0,0" VerticalAlignment="Top" Width="304"/>
         </Grid>
-        <Grid x:Name="Settings" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="443" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="952" d:IsHidden="True" Visibility="Hidden">
-            <Slider x:Name="MaxMemSlider" HorizontalAlignment="Left" Margin="189,103,0,0" VerticalAlignment="Top" Width="708" Height="19" Foreground="White" BorderBrush="White" Maximum="8096" Minimum="1024"/>
-            <TextBox x:Name="JavaPathBox" materialDesign:HintAssist.Hint="The path to your javaw.exe file" HorizontalAlignment="Left" Height="21" Margin="189,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White"/>
-            <TextBox x:Name="CustomArgsBox" materialDesign:HintAssist.Hint="Set JVM parameter. If this property is null, use default JVM parameter." HorizontalAlignment="Left" Height="21" Margin="189,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White"/>
-            <TextBox x:Name="ServerIPBox" materialDesign:HintAssist.Hint="Connect to server directly when minecraft loading is done." HorizontalAlignment="Left" Height="21" Margin="189,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White"/>
-            <TextBox x:Name="ScreenWidthBox" materialDesign:HintAssist.Hint="Width" HorizontalAlignment="Left" Height="21" Margin="189,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White"/>
-            <TextBox x:Name="ScreenHeightBox" materialDesign:HintAssist.Hint="Height" HorizontalAlignment="Left" Height="21" Margin="276,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White"/>
+        <Grid x:Name="Settings" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="443" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="952" Visibility="Hidden" Opacity="0.994">
+            <Slider x:Name="MaxMemSlider" Background="Transparent" HorizontalAlignment="Left" Margin="189,103,0,0" VerticalAlignment="Top" Width="708" Height="19" Foreground="White" BorderBrush="White" Maximum="8096" Minimum="1024"/>
+            <TextBox x:Name="JavaPathBox" materialDesign:HintAssist.Hint="The path to your javaw.exe file" HorizontalAlignment="Left" Height="21" Margin="189,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="CustomArgsBox" materialDesign:HintAssist.Hint="Set JVM parameter. If this property is null, use default JVM parameter." HorizontalAlignment="Left" Height="21" Margin="189,251,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="ServerIPBox" materialDesign:HintAssist.Hint="Connect to server directly when minecraft loading is done." HorizontalAlignment="Left" Height="21" Margin="189,326,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="ScreenWidthBox" materialDesign:HintAssist.Hint="Width" HorizontalAlignment="Left" Height="21" Margin="189,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="ScreenHeightBox" materialDesign:HintAssist.Hint="Height" HorizontalAlignment="Left" Height="21" Margin="276,401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
             <Label Content="Maximium memory" HorizontalAlignment="Left" Height="21" Margin="32,101,0,0" VerticalAlignment="Top" Width="135" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
             <Label Content="Java Path" HorizontalAlignment="Left" Height="21" Margin="32,176,0,0" VerticalAlignment="Top" Width="135" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
             <Label Content="Custom JVM Arguments" HorizontalAlignment="Left" Height="21" Margin="32,252,0,0" VerticalAlignment="Top" Width="135" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
@@ -170,7 +170,7 @@
             <Label Content="Screen Resolution" HorizontalAlignment="Left" Height="21" Margin="32,401,0,0" VerticalAlignment="Top" Width="116" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
             <Label Content="x" HorizontalAlignment="Left" Height="21" Margin="257,396,0,0" VerticalAlignment="Top" Width="22" Background="{x:Null}" Foreground="#DDFFFFFF"/>
         </Grid>
-        <Grid x:Name="Status" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="442" Margin="0,3,0,0" Grid.Row="1" VerticalAlignment="Top" Width="952" d:IsHidden="True" Visibility="Hidden">
+        <Grid x:Name="Status" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="442" Margin="0,3,0,0" Grid.Row="1" VerticalAlignment="Top" Width="952" Visibility="Hidden">
             <Ellipse x:Name="MojangStatus" HorizontalAlignment="Left" Height="10" Margin="8,20,0,0" VerticalAlignment="Top" Width="10" Fill="Transparent"/>
             <Label Content="Mojang" HorizontalAlignment="Left" Height="28" Margin="23,14,0,0" VerticalAlignment="Top" Width="201" Foreground="#DDFFFFFF" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
             <Ellipse x:Name="MinecraftNetStatus" HorizontalAlignment="Left" Height="10" Margin="8,70,0,0" VerticalAlignment="Top" Width="10" Fill="Transparent"/>
@@ -191,7 +191,7 @@
             <Label Content="Sessions" HorizontalAlignment="Left" Height="28" Margin="455,164,0,0" VerticalAlignment="Top" Width="201" Foreground="#DDFFFFFF" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
             <Ellipse x:Name="TextureServerStatus" HorizontalAlignment="Left" Height="10" Margin="440,220,0,0" VerticalAlignment="Top" Width="10" Fill="Transparent"/>
             <Label Content="Texture servers" HorizontalAlignment="Left" Height="28" Margin="455,214,0,0" VerticalAlignment="Top" Width="201" Foreground="#DDFFFFFF" FontSize="16" FontWeight="Normal" FontStyle="Normal"/>
-            <Image Margin="18,250,884,142" Stretch="Uniform" Source="pack://siteoforigin:,,,/Photos/wynncraftLogo.png"/>
+            <Image Margin="18,250,884,142" Stretch="Uniform" Source="/wynncraftLogo.png"/>
             <Ellipse x:Name="WynncraftStatus" HorizontalAlignment="Left" Height="10" Margin="8,270,0,0" VerticalAlignment="Top" Width="10" Fill="Transparent"/>
             <Label Content="WynnCraft" HorizontalAlignment="Left" Height="28" Margin="58,264,0,0" VerticalAlignment="Top" Width="201" FontSize="16" Foreground="#DDFFFFFF"/>
             <TextBlock HorizontalAlignment="Left" Height="18" Margin="63,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"><Run Foreground="White" Text="Ping:"/><Run Text=" "/><Run x:Name="WynncraftPing"/></TextBlock>
@@ -208,11 +208,12 @@
             <Label Content="Mineplex" HorizontalAlignment="Left" Height="28" Margin="490,255,0,0" VerticalAlignment="Top" Width="201" FontSize="16" Foreground="#DDFFFFFF"/>
             <TextBlock HorizontalAlignment="Left" Height="18" Margin="495,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"><Run Foreground="White" Text="Ping:"/><Run Text=" "/><Run x:Name="MineplexPing"/></TextBlock>
         </Grid>
-        <Grid x:Name="Information" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952" d:IsHidden="True" Visibility="Hidden">
+        <Grid x:Name="Information" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Left" Height="83" Margin="114,46,0,0" Text="MaiksLauncher" Foreground="White" TextWrapping="Wrap" VerticalAlignment="Top" Width="477" FontFamily="Corbel" FontSize="70" FontWeight="Bold"/>
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="194,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" FontSize="20" Foreground="White" FontWeight="Bold"><Run Text="Made by Maik (maikpla) "/><LineBreak/><Run/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Height="138" Margin="0,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"><Run Foreground="White" Text="This project uses CmlLib.Core for launching and initializing Minecraft(R) sessions"/><LineBreak/><Run Foreground="White" Text="This project also uses MaterialDesignInXAML for most of the UI Elements"/><LineBreak/><Run Foreground="White" Text="The source code for this project can be found at maikpla.github.io"/><LineBreak/><LineBreak/><Run Foreground="White" Text="Thank you so much for using MaiksLauncher! We 100% respect your privacy and do not store your password or email."/><LineBreak/><LineBreak/><Run Foreground="White" Text="This Project is licensed under the &quot;Unlicensed&quot; license, for more information, read the License file."/></TextBlock>
         </Grid>
+        <Grid x:Name="PlayerInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="445" Grid.Row="1" VerticalAlignment="Center" Width="952" Visibility="Hidden"/>
 
 
     </Grid>

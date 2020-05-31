@@ -35,7 +35,7 @@
                         <ColumnDefinition Width="61*" />
                         <ColumnDefinition Width="241*"/>
                     </Grid.ColumnDefinitions>
-                    
+
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem">
@@ -50,9 +50,13 @@
                     <Label Content="Log save folder:" HorizontalAlignment="Left" Margin="10,109,0,0" VerticalAlignment="Top" />
                     <Label Content="&lt;empty&gt;" HorizontalAlignment="Left" Margin="10,143,0,0" VerticalAlignment="Top" />
                     <Label Content="&lt;empty&gt;" HorizontalAlignment="Left" Margin="10,176,0,0" VerticalAlignment="Top" />
-                     </Grid>
+                </Grid>
             </TabItem>
         </TabControl>
         <ComboBox x:Name="LauncherProfiles" Grid.Column="1" HorizontalAlignment="Left" Margin="201,51,0,0" Grid.Row="1" VerticalAlignment="Top" Width="97" Height="26"/>
+        <Grid x:Name="TestG" Grid.Column="1" HorizontalAlignment="Left" Height="52" Margin="184,62,0,0" Grid.Row="1" VerticalAlignment="Top" Width="137">
+            <Button Content="Button" HorizontalAlignment="Center" Height="42" Margin="0,10,0,0" VerticalAlignment="Top" Width="81" Background="#FF6E6E6E" Foreground="#FF4B4B4B"/>
+        </Grid>
+        <Button x:Name="toggler" Content="Button" Grid.Column="1" HorizontalAlignment="Left" Height="33" Margin="371,72,0,0" Grid.Row="1" VerticalAlignment="Top" Width="77" Click="toggle"/>
     </Grid>
 </Window>
