@@ -1,0 +1,55 @@
+﻿<Window x:Class="MaiksLauncher.LoginNew"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:MaiksLauncher"
+        mc:Ignorable="d"
+        Title="Login - MaiksLauncher" Height="502" Width="952" ResizeMode="NoResize" Activated="LoginActive">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="162*"/>
+            <ColumnDefinition Width="24*"/>
+            <ColumnDefinition Width="185*"/>
+            <ColumnDefinition Width="430*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="0,0,66,0" Grid.ColumnSpan="3">
+            <Grid Height="484">
+                <Label Content="Your password and email are sent directly to Mojang&#xA;authentication servers, we do not store your password &#xA;under any circumstances." HorizontalAlignment="Left" Margin="40,274,0,152" Width="320" FontSize="10"/>
+                <TextBox x:Name="Email" Height="45" TextWrapping="NoWrap" VerticalAlignment="Top" Margin="15,156,15,0"
+                    Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
+                    materialDesign:HintAssist.Hint="Email" RenderTransformOrigin="0.5,0.5" Opacity="1"/>
+                <PasswordBox x:Name="userPassword"
+                    
+                    Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
+                    materialDesign:HintAssist.Hint="Password" Margin="15,214,15,225" />
+                <Image HorizontalAlignment="Left" Height="30" Margin="10,283,0,0" VerticalAlignment="Top" Width="30" Source="/Photos/i.png" RenderTransformOrigin="0.367,0.801"/>
+                <Label Content="Login" HorizontalAlignment="Left" Height="68" VerticalAlignment="Top" Width="128" Margin="10,58,0,0" FontFamily="Corbel" FontSize="48" FontWeight="Bold"/>
+                <Button x:Name="SignInButton" Content="Sign In" HorizontalAlignment="Left" Height="47" Margin="237,407,0,0" VerticalAlignment="Top" Width="123" Click="SignIn"/>
+                <CheckBox x:Name="ifOffline" Content="Offline mode (Cracked)" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="150" Margin="15,326,0,0" Checked="OfflineChecked" Unchecked="OfflineUnchecked"/>
+                <CheckBox x:Name="ifRemember" Content="Remember me" HorizontalAlignment="Left" Height="22" VerticalAlignment="Top" Width="138" Margin="15,348,0,0"/>
+                <ProgressBar Height="67" Width="67"
+                 Style="{StaticResource MaterialDesignCircularProgressBar}"
+                 Value="0"
+                 Opacity="0"
+                 IsIndeterminate="True"
+                 x:Name="Progress" Margin="0,397,283,0" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black" />
+                <TextBlock x:Name="LoginStatus" HorizontalAlignment="Left" Height="47" Margin="92,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+
+            </Grid>
+        </StackPanel>
+        <StackPanel Margin="159,-5,-5,0" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid Height="490" Width="579">
+                <Image HorizontalAlignment="Center" Height="511" VerticalAlignment="Center" Width="577" Source="Photos/2020-05-23_11.05.58.png" Stretch="UniformToFill"/>
+            </Grid>
+        </StackPanel>
+        <Grid x:Name="LoginCover" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <Rectangle x:Name="___No_Name_" HorizontalAlignment="Left" Height="486" VerticalAlignment="Center" Width="957" Fill="White"/>
+            <Label Content="Attempting auto login..." HorizontalAlignment="Left" Margin="427,217,0,0" VerticalAlignment="Top" Width="140"/>
+            <ProgressBar  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" HorizontalAlignment="Left" Height="19" Margin="398,222,0,0" VerticalAlignment="Top" Width="19" Background="Transparent" Foreground="Black"/>
+
+        </Grid>
+
+    </Grid>
+</Window>
