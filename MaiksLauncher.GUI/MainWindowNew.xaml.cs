@@ -36,7 +36,7 @@ namespace MaiksLauncher
         public static MSession MainSession;
         public static string userUUID;
         private string SelectedVersion;
-
+        private int CurrentGrid;
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -55,7 +55,6 @@ namespace MaiksLauncher
         private void LaunchClick(object sender, RoutedEventArgs e)
         {
             var session = new MSession (Username, accessToken, userUUID);
-            
             var th = new Thread(new ThreadStart(delegate
             {
                 CMLauncher launcher = new CMLauncher(Minecraft.GetOSDefaultPath());
@@ -107,6 +106,87 @@ namespace MaiksLauncher
             if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
             string fixedVersionSlected = new string(versionSelectedChar);
             SelectedVersion = fixedVersionSlected;
+        }
+
+        private void PlayerInfoClick(object sender, RoutedEventArgs e)
+        {
+            PlayerInfo.Opacity = 100;
+            PlayerInfoButton.IsEnabled = false;
+            if (CurrentGrid == 0)
+            {  Home.Opacity = 0; HomeButton.IsEnabled = true;}
+            else if (CurrentGrid == 2)
+            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            else if (CurrentGrid == 3)
+            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            else if (CurrentGrid == 4)
+            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
+            CurrentGrid = 1;
+
+        }
+
+        private void InfoClick(object sender, RoutedEventArgs e)
+        {
+            Information.Opacity = 100;
+            InformationButton.IsEnabled = false;
+            if (CurrentGrid == 0)
+            { Home.Opacity = 0; HomeButton.IsEnabled = true; }
+            else if (CurrentGrid == 1)
+            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            else if (CurrentGrid == 3)
+            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            else if (CurrentGrid == 4)
+            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
+            CurrentGrid = 2;
+        }
+
+        private void ServerStatusClick(object sender, RoutedEventArgs e)
+        {
+            Status.Opacity = 100;
+            ServerStatusButton.IsEnabled = false;
+            if (CurrentGrid == 3)
+            { Home.Opacity = 0; HomeButton.IsEnabled = true; }
+            else if (CurrentGrid == 1)
+            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            else if (CurrentGrid == 2)
+            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            else if (CurrentGrid == 4)
+            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
+            CurrentGrid = 1;
+        }
+
+        private void SettingsClick(object sender, RoutedEventArgs e)
+        {
+            Settings.Opacity = 100;
+            SettingsButton.IsEnabled = false;
+            if (CurrentGrid == 0)
+            { Home.Opacity = 0; HomeButton.IsEnabled = true; }
+            else if (CurrentGrid == 1)
+            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            else if (CurrentGrid == 2)
+            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            else if (CurrentGrid == 3)
+            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            CurrentGrid = 1;
+        }
+
+        private void HomeClick(object sender, RoutedEventArgs e)
+        {
+            PlayerInfo.Opacity = 100;
+            PlayerInfoButton.IsEnabled = false;
+            if (CurrentGrid == 1)
+            { PlayerInfo.Opacity = 0; PlayerInfoButton.IsEnabled = true; }
+            else if (CurrentGrid == 2)
+            { Information.Opacity = 0; InformationButton.IsEnabled = true; }
+            else if (CurrentGrid == 3)
+            { Status.Opacity = 0; ServerStatusButton.IsEnabled = true; }
+            else if (CurrentGrid == 4)
+            { Settings.Opacity = 0; SettingsButton.IsEnabled = true; }
+            CurrentGrid = 1;
+        }
+
+        private void InvalidateSessionClick(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
