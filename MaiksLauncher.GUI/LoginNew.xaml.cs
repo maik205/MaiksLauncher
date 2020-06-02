@@ -114,16 +114,49 @@ namespace MaiksLauncher
             }
             else
             {
-                LoginCover.Opacity = 0;
+                LoginCover.Visibility = Visibility.Hidden;
                 LoginCover.IsEnabled = false;
             }
         }
-        private void LoginActive(object sender, EventArgs e)
+
+        private void LoginActive(object sender, RoutedEventArgs e)
         {
-            tryautologin();
+            
+            var th = new Thread(new ThreadStart(delegate
+            {
+                var login = new MLogin();
+                var session = login.TryAutoLogin();
+                if (session.Result == MLoginResult.Success)
+                {
+                    Application.Current.Dispatcher.Invoke((Action)delegate
+                    {
+                        {
+                            MainWindowNew mw = new MainWindowNew();
+                            MainWindowNew.MainSession = session;
+                            MainWindowNew.Username = session.Username;
+                            MainWindowNew.userUUID = session.UUID;
+                            mw.Show();
+                            this.Close();
+                        }
+                    });
+                   
 
+                    
+
+                }
+                else
+                {
+                    LoginCover.Visibility = Visibility.Hidden;
+                    LoginCover.IsEnabled = false;
+                    Dispatcher.BeginInvoke(new Action(delegate
+                    {
+                        LoginCover.Visibility = Visibility.Hidden;
+                        LoginCover.IsEnabled = false;
+
+                    }));
+                }
+            }));
+            th.Start();
         }
-
-
     }
 }

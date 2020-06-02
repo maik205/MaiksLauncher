@@ -151,7 +151,10 @@
         <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
             <TextBlock HorizontalAlignment="Left" Height="93" TextWrapping="Wrap" VerticalAlignment="Top" Width="897" Foreground="White" FontFamily="Corbel" FontWeight="Bold" FontSize="72" Margin="25,33,0,0"><Run Text="Welcome"/><Run x:Name="username" /></TextBlock>
             <Button Content="Launch" x:Name="LaunchButton" Margin="695,368,30,0" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Height="66" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Corbel" Click="LaunchClick"/>
-            <ComboBox x:Name="versionList" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="66" Margin="450,368,0,0" VerticalAlignment="Top" Width="216" Background="Transparent" Foreground="Black" SelectedIndex="0" FontFamily="Corbel" FontWeight="Bold" FontSize="16" SelectionChanged="versionChange">
+            <ComboBox x:Name="versionList" 
+                      materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource SecondaryAccentBrush}"
+                      materialDesign:ColorZoneAssist.Mode="Inverted"
+                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="66" Margin="450,368,0,0" VerticalAlignment="Top" Width="216" Background="Transparent" Foreground="White" SelectedIndex="0" FontFamily="Corbel" FontWeight="Bold" FontSize="16" SelectionChanged="versionChange">
                 <ComboBoxItem Foreground="White" Content="Choose the version"/>
             </ComboBox>
             <Label x:Name="Error" Content="" HorizontalAlignment="Left" Height="59" Margin="75,375,0,0" VerticalAlignment="Top" Width="304"/>
@@ -213,7 +216,10 @@
             <TextBlock HorizontalAlignment="Left" Height="31" Margin="194,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="452" FontSize="20" Foreground="White" FontWeight="Bold"><Run Text="Made by Maik (maikpla) "/><LineBreak/><Run/></TextBlock>
             <TextBlock HorizontalAlignment="Center" Height="138" Margin="0,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"><Run Foreground="White" Text="This project uses CmlLib.Core for launching and initializing Minecraft(R) sessions"/><LineBreak/><Run Foreground="White" Text="This project also uses MaterialDesignInXAML for most of the UI Elements"/><LineBreak/><Run Foreground="White" Text="The source code for this project can be found at maikpla.github.io"/><LineBreak/><LineBreak/><Run Foreground="White" Text="Thank you so much for using MaiksLauncher! We 100% respect your privacy and do not store your password or email."/><LineBreak/><LineBreak/><Run Foreground="White" Text="This Project is licensed under the &quot;Unlicensed&quot; license, for more information, read the License file."/></TextBlock>
         </Grid>
-        <Grid x:Name="PlayerInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="445" Grid.Row="1" VerticalAlignment="Center" Width="952" Visibility="Hidden"/>
+        <Grid x:Name="PlayerInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="445" Grid.Row="1" VerticalAlignment="Center" Width="952" Visibility="Hidden">
+            <TextBlock HorizontalAlignment="Left" Height="204" Margin="198,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="604" Foreground="White" FontSize="18"><Run Text="Your name is " Foreground="White" FontSize="48"/> <Run x:Name="PlayerInfoName"/> <LineBreak/><Run Text="Access token: "/><Run x:Name="PlayerInfoAToken"/><LineBreak/><Run Text="UUID: "/><Run x:Name="PlayerInfoUUID"/><LineBreak/><Run Text="Client token: "/><Run x:Name="PlayerInfoClientToken"/></TextBlock>
+            <Button x:Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent"  Height="50" Margin="640,288,0,0" VerticalAlignment="Top" Width="162" Click="SignOutClick"/>
+        </Grid>
 
 
     </Grid>

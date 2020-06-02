@@ -56,10 +56,14 @@ namespace MaiksLauncher
 
         private void LaunchClick(object sender, RoutedEventArgs e)
         {
+            
             var session = new MSession (Username, accessToken, userUUID);
 
             var th = new Thread(new ThreadStart(delegate
             {
+                Application.Current.Dispatcher.Invoke((Action)delegate {
+                    LaunchButton.IsEnabled = false;
+                });
                 string selectedver = "";
                 Dispatcher.BeginInvoke(new Action(delegate
                 {
@@ -72,9 +76,12 @@ namespace MaiksLauncher
                 };
                 var process = launcher.CreateProcess(selectedver, launchOptions);
                 process.Start();
+                Application.Current.Dispatcher.Invoke((Action)delegate {
+                    LaunchButton.IsEnabled = true;
+                });
             }));
             th.Start();
-
+           
         }
         private void windowActive(object sender, RoutedEventArgs e)
         {
@@ -117,11 +124,11 @@ namespace MaiksLauncher
         {
             SelectedVersion = versionList.SelectedItem.ToString();
 
-            //// weird behaviour but fixed
-            //char[] versionSelectedChar = SelectedVersion.ToCharArray();
-            //if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
-            //string fixedVersionSlected = new string(versionSelectedChar);
-            //SelectedVersion = fixedVersionSlected;
+            // weird behaviour but fixed
+            char[] versionSelectedChar = SelectedVersion.ToCharArray();
+            if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
+            string fixedVersionSlected = new string(versionSelectedChar);
+            SelectedVersion = fixedVersionSlected;
         }
 
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
@@ -198,11 +205,9 @@ namespace MaiksLauncher
             { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
             CurrentGrid = 0;
         }
-
-        private void InvalidateSessionClick(object sender, RoutedEventArgs e)
+        private void SignOutClick(object sender, RoutedEventArgs e)
         {
 
         }
-
     }
 }
