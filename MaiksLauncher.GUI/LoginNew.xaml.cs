@@ -29,7 +29,6 @@ namespace MaiksLauncher
 
         private MSession Session;
         private bool isEncrypted = false;
-        MainWindowNew mw = new MainWindowNew();
 
         private void SignIn(object sender, RoutedEventArgs e)
         {
@@ -45,20 +44,17 @@ namespace MaiksLauncher
                     email = Email.Text;
                     password = userPassword.Password;
                 });
-                var result = login.Authenticate(email,password);
+                var result = login.Authenticate(email, password);
                 if (result.Result == MLoginResult.Success)
                 {
                     Session = result;
                     Dispatcher.BeginInvoke(new Action(delegate
                     {
-                        MainWindowNew.accessToken = Session.AccessToken;
-                        MainWindowNew.Username = Session.Username;
-                        MainWindowNew.userUUID = Session.UUID;
                         LoginStatus.Foreground = Brushes.LightGreen;
                         LoginStatus.Text = "Successful login! Transfering you to the main window...";
                         this.Hide();
-                        MainWindowNew mw = new MainWindowNew();
-                       
+
+                        MainWindowNew mw = new MainWindowNew(Session);
                         mw.Show();
                     }));
                 }
@@ -73,20 +69,19 @@ namespace MaiksLauncher
                 }
             }));
 
-                if (ifOffline.IsChecked != false)
-                {
-                    MainWindowNew.Username = Email.Text;
-                    MainWindowNew mw = new MainWindowNew();
-                    mw.Show();
-                }
-                else
-                {
-                    th.Start();
-                }
+            if (ifOffline.IsChecked != false)
+            {
+                MainWindowNew mw = new MainWindowNew(MSession.GetOfflineSession(Email.Text));
+                mw.Show();
+            }
+            else
+            {
+                th.Start();
+            }
 
         }
 
-       
+
         // Checkboxes
         private void OfflineChecked(object sender, RoutedEventArgs e)
         {
@@ -103,10 +98,7 @@ namespace MaiksLauncher
             var session = login.TryAutoLogin();
             if (session.Result == MLoginResult.Success)
             {
-                MainWindowNew mw = new MainWindowNew();
-                MainWindowNew.MainSession = session;
-                MainWindowNew.Username = session.Username;
-                MainWindowNew.userUUID = session.UUID;
+                MainWindowNew mw = new MainWindowNew(session);
                 this.Close();
 
                 mw.Show();
@@ -121,7 +113,7 @@ namespace MaiksLauncher
 
         private void LoginActive(object sender, RoutedEventArgs e)
         {
-            
+
             var th = new Thread(new ThreadStart(delegate
             {
                 var login = new MLogin();
@@ -131,25 +123,18 @@ namespace MaiksLauncher
                     Application.Current.Dispatcher.Invoke((Action)delegate
                     {
                         {
-                            MainWindowNew mw = new MainWindowNew();
-                            MainWindowNew.MainSession = session;
-                            MainWindowNew.Username = session.Username;
-                            MainWindowNew.userUUID = session.UUID;
+                            MainWindowNew mw = new MainWindowNew(session);
                             mw.Show();
                             this.Close();
                         }
                     });
-                   
-
-                    
-
                 }
                 else
                 {
-                    LoginCover.Visibility = Visibility.Hidden;
-                    LoginCover.IsEnabled = false;
                     Dispatcher.BeginInvoke(new Action(delegate
                     {
+                        LoginCover.Visibility = Visibility.Hidden;
+                        LoginCover.IsEnabled = false;
                         LoginCover.Visibility = Visibility.Hidden;
                         LoginCover.IsEnabled = false;
 

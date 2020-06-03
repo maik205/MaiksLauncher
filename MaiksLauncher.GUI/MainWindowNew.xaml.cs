@@ -25,19 +25,17 @@ namespace MaiksLauncher
     /// </summary>
     public partial class MainWindowNew : Window
     {
-        public MainWindowNew()
+        public MSession MainSession;
+
+        public MainWindowNew(MSession session)
         {
+            MainSession = session;
             InitializeComponent();
             MouseDown += MainWindow_MouseDown;
         }
 
-        public static string accessToken;
-        public static string Username;
-        public static MSession MainSession;
-        public static string userUUID;
-
         private CMLauncher launcher;
-        private string SelectedVersion;
+        //private string SelectedVersion;
         private int CurrentGrid = 0;
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
@@ -56,36 +54,37 @@ namespace MaiksLauncher
 
         private void LaunchClick(object sender, RoutedEventArgs e)
         {
-            
-            var session = new MSession (Username, accessToken, userUUID);
-
             var th = new Thread(new ThreadStart(delegate
             {
+                var selectedver = "";
+
                 Application.Current.Dispatcher.Invoke((Action)delegate {
                     LaunchButton.IsEnabled = false;
+                    selectedver = versionList.Text;
                 });
-                string selectedver = "";
-                Dispatcher.BeginInvoke(new Action(delegate
-                {
-                    selectedver = SelectedVersion;
-                }));
+
                 var launchOptions = new MLaunchOption
                 {
                     MaximumRamMb = 2048,
                     Session = MainSession,
                 };
+
+                // to debug
+                MessageBox.Show(selectedver);
+
                 var process = launcher.CreateProcess(selectedver, launchOptions);
                 process.Start();
+
                 Application.Current.Dispatcher.Invoke((Action)delegate {
                     LaunchButton.IsEnabled = true;
                 });
             }));
             th.Start();
-           
+
         }
         private void windowActive(object sender, RoutedEventArgs e)
         {
-            username.Text = " " + Username;
+            username.Text = " " + MainSession.Username;
             var th = new Thread(new ThreadStart(delegate
             {
                 var McPath = Minecraft.GetOSDefaultPath();
@@ -112,23 +111,34 @@ namespace MaiksLauncher
 
         private void Launcher_FileChanged(DownloadFileChangedEventArgs e)
         {
-            Console.WriteLine("[{0}] {1} - {2}/{3}", e.FileKind.ToString(), e.FileName, e.ProgressedFileCount, e.TotalFileCount);
+            Dispatcher.Invoke(new Action(() =>
+            {
+                testLabel.Content = string.Format("[{0}] {1} - {2}/{3}", e.FileKind.ToString(), e.FileName, e.ProgressedFileCount, e.TotalFileCount);
+                if (e.FileKind == MFile.Resource)
+                {
+                    testPb.Maximum = e.TotalFileCount;
+                    testPb.Value = e.ProgressedFileCount;
+                }
+            }));
         }
 
         private void Launcher_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
-            Console.WriteLine("{0}%", e.ProgressPercentage);
+            Dispatcher.Invoke(new Action(() => {
+                testPb.Maximum = 100;
+                testPb.Value = e.ProgressPercentage;
+            }));
         }
 
         private void versionChange(object sender, SelectionChangedEventArgs e)
         {
-            SelectedVersion = versionList.SelectedItem.ToString();
+            //SelectedVersion = versionList.SelectedItem.ToString();
 
             // weird behaviour but fixed
-            char[] versionSelectedChar = SelectedVersion.ToCharArray();
-            if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
-            string fixedVersionSlected = new string(versionSelectedChar);
-            SelectedVersion = fixedVersionSlected;
+            //char[] versionSelectedChar = SelectedVersion.ToCharArray();
+            //if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
+            //string fixedVersionSlected = new string(versionSelectedChar);
+            //SelectedVersion = fixedVersionSlected;
         }
 
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
@@ -136,13 +146,13 @@ namespace MaiksLauncher
             PlayerInfo.Visibility = Visibility.Visible;
             PlayerInfoButton.IsEnabled = false;
             if (CurrentGrid == 0)
-            {  Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true;  }
+            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true; }
             else if (CurrentGrid == 2)
             { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true;}
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true; }
             else if (CurrentGrid == 4)
-            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true;}
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
             CurrentGrid = 1;
 
         }
@@ -152,13 +162,13 @@ namespace MaiksLauncher
             Information.Visibility = Visibility.Visible;
             InformationButton.IsEnabled = false;
             if (CurrentGrid == 0)
-            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true;}
+            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true; }
             else if (CurrentGrid == 1)
             { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true;  }
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true; }
             else if (CurrentGrid == 4)
-            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true;}
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
             CurrentGrid = 2;
         }
 
@@ -167,7 +177,7 @@ namespace MaiksLauncher
             Status.Visibility = Visibility.Visible;
             ServerStatusButton.IsEnabled = false;
             if (CurrentGrid == 3)
-            { Home.Visibility = Visibility.Hidden;  HomeButton.IsEnabled = true; }
+            { Home.Visibility = Visibility.Hidden; HomeButton.IsEnabled = true; }
             else if (CurrentGrid == 1)
             { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 2)
@@ -182,13 +192,13 @@ namespace MaiksLauncher
             Settings.Visibility = Visibility.Visible;
             SettingsButton.IsEnabled = false;
             if (CurrentGrid == 0)
-            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true;  }
+            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true; }
             else if (CurrentGrid == 1)
             { PlayerInfo.Visibility = Visibility.Hidden; ; PlayerInfoButton.IsEnabled = true; }
             else if (CurrentGrid == 2)
             { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
             else if (CurrentGrid == 3)
-            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true;}
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true; }
             CurrentGrid = 4;
         }
         private void HomeClick(object sender, RoutedEventArgs e)
