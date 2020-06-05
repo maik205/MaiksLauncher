@@ -135,8 +135,6 @@ namespace MaiksLauncher
                     {
                         LoginCover.Visibility = Visibility.Hidden;
                         LoginCover.IsEnabled = false;
-                        LoginCover.Visibility = Visibility.Hidden;
-                        LoginCover.IsEnabled = false;
 
                     }));
                 }
