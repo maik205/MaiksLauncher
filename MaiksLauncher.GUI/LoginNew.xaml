@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:MaiksLauncher"
         mc:Ignorable="d"
         Title="Login - MaiksLauncher" Height="502" Width="952" ResizeMode="NoResize" Loaded="LoginActive">
-    <Grid Loaded="LoginActive">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="162*"/>
             <ColumnDefinition Width="24*"/>

@@ -158,6 +158,8 @@
                 <ComboBoxItem Foreground="White" Content="Choose the version"/>
             </ComboBox>
             <Label x:Name="Error" Content="" HorizontalAlignment="Left" Height="59" Margin="75,375,0,0" VerticalAlignment="Top" Width="304"/>
+            <Label x:Name="testLabel" Content="Label" HorizontalAlignment="Left" Margin="184,275,0,0" VerticalAlignment="Top" Width="248"/>
+            <ProgressBar x:Name="testPb" Foreground="White" HorizontalAlignment="Left" Height="29" Margin="184,302,0,0" VerticalAlignment="Top" Width="248"/>
         </Grid>
         <Grid x:Name="Settings" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="443" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="952" Visibility="Hidden" Opacity="0.994">
             <Slider x:Name="MaxMemSlider" Background="Transparent" HorizontalAlignment="Left" Margin="189,103,0,0" VerticalAlignment="Top" Width="708" Height="19" Foreground="White" BorderBrush="White" Maximum="8096" Minimum="1024"/>
