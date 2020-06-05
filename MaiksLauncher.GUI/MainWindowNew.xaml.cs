@@ -70,17 +70,16 @@ namespace MaiksLauncher
                 };
 
                 // to debug
-                MessageBox.Show(selectedver);
 
                 var process = launcher.CreateProcess(selectedver, launchOptions);
                 process.Start();
 
                 Application.Current.Dispatcher.Invoke((Action)delegate {
                     LaunchButton.IsEnabled = true;
+                    
                 });
             }));
             th.Start();
-
         }
         private void windowActive(object sender, RoutedEventArgs e)
         {
@@ -113,11 +112,11 @@ namespace MaiksLauncher
         {
             Dispatcher.Invoke(new Action(() =>
             {
-                testLabel.Content = string.Format("[{0}] {1} - {2}/{3}", e.FileKind.ToString(), e.FileName, e.ProgressedFileCount, e.TotalFileCount);
+                LaunchLog.Content = string.Format("[{0}] {1} - {2}/{3}", e.FileKind.ToString(), e.FileName, e.ProgressedFileCount, e.TotalFileCount);
                 if (e.FileKind == MFile.Resource)
                 {
-                    testPb.Maximum = e.TotalFileCount;
-                    testPb.Value = e.ProgressedFileCount;
+                    LaunchProgress.Maximum = e.TotalFileCount;
+                    LaunchProgress.Value = e.ProgressedFileCount;
                 }
             }));
         }
@@ -125,20 +124,9 @@ namespace MaiksLauncher
         private void Launcher_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
         {
             Dispatcher.Invoke(new Action(() => {
-                testPb.Maximum = 100;
-                testPb.Value = e.ProgressPercentage;
+                LaunchProgress.Maximum = 100;
+                LaunchProgress.Value = e.ProgressPercentage;
             }));
-        }
-
-        private void versionChange(object sender, SelectionChangedEventArgs e)
-        {
-            //SelectedVersion = versionList.SelectedItem.ToString();
-
-            // weird behaviour but fixed
-            //char[] versionSelectedChar = SelectedVersion.ToCharArray();
-            //if (versionSelectedChar[0] == ' ') { versionSelectedChar = versionSelectedChar.Skip(1).ToArray(); }
-            //string fixedVersionSlected = new string(versionSelectedChar);
-            //SelectedVersion = fixedVersionSlected;
         }
 
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
@@ -217,7 +205,11 @@ namespace MaiksLauncher
         }
         private void SignOutClick(object sender, RoutedEventArgs e)
         {
-
+            MLogin mLogin = new MLogin();
+            mLogin.Invalidate();
+            this.Close();
+            LoginNew newLogin = new LoginNew();
+            newLogin.Show();
         }
     }
 }
