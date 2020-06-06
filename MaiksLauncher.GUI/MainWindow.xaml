@@ -141,7 +141,7 @@
         </Button>
         <Button
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            x:Name="PowerButton" ToolTip="Skins" Margin="12,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="PowerButton_Click">
+            x:Name="PowerButton" ToolTip="Close the launcher" Margin="12,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Background="{x:Null}" BorderBrush="{x:Null}" Grid.ColumnSpan="2" Click="PowerButton_Click">
             <materialDesign:PackIcon
                 
                 Kind="Power"
