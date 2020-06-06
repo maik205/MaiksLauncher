@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Printing;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using CmlLib.Core;
 using MaiksLauncher.Core;
+using MaiksLauncher.GUI;
 
 namespace MaiksLauncher
 {
@@ -71,8 +73,18 @@ namespace MaiksLauncher
 
             if (ifOffline.IsChecked != false)
             {
-                MainWindowNew mw = new MainWindowNew(MSession.GetOfflineSession(Email.Text));
-                mw.Show();
+                Regex r = new Regex("^[a-zA-Z0-9_]+$");
+                if (r.IsMatch(Email.Text))
+                {
+                    MainWindowNew mw = new MainWindowNew(MSession.GetOfflineSession(Email.Text));
+                    mw.Show();
+                    this.Close();
+                }
+                else
+                {
+                    LoginStatus.Text = "Invalid characters in your username";
+                    Progress.Opacity = 0;
+                }
             }
             else
             {
@@ -86,6 +98,7 @@ namespace MaiksLauncher
         private void OfflineChecked(object sender, RoutedEventArgs e)
         {
             userPassword.IsEnabled = false;
+            
         }
 
         private void OfflineUnchecked(object sender, RoutedEventArgs e)
@@ -140,6 +153,13 @@ namespace MaiksLauncher
                 }
             }));
             th.Start();
+        }
+
+        private void OldLookClick(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
         }
     }
 }

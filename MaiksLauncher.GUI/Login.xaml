@@ -36,6 +36,7 @@
                  IsIndeterminate="True"
                  x:Name="Progress" Margin="0,397,283,0" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black" />
                 <TextBlock x:Name="LoginStatus" HorizontalAlignment="Left" Height="47" Margin="92,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
+                <Button Content="Old look?" HorizontalAlignment="Left" Margin="237,359,0,0" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Foreground="Black" Height="43" Width="123" Click="OldLookClick"/>
 
             </Grid>
         </StackPanel>
@@ -44,7 +45,7 @@
                 <Image HorizontalAlignment="Center" Height="511" VerticalAlignment="Center" Width="577" Source="Photos/2020-05-23_11.05.58.png" Stretch="UniformToFill"/>
             </Grid>
         </StackPanel>
-        <Grid x:Name="LoginCover" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center">
+        <Grid x:Name="LoginCover" Grid.ColumnSpan="4" HorizontalAlignment="Left" VerticalAlignment="Center" d:IsHidden="True">
             <Rectangle x:Name="___No_Name_" HorizontalAlignment="Left" Height="486" VerticalAlignment="Center" Width="957" Fill="White"/>
             <Label Content="Attempting auto login..." HorizontalAlignment="Left" Margin="427,217,0,0" VerticalAlignment="Top" Width="140"/>
             <ProgressBar  Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" HorizontalAlignment="Left" Height="19" Margin="398,222,0,0" VerticalAlignment="Top" Width="19" Background="Transparent" Foreground="Black"/>
