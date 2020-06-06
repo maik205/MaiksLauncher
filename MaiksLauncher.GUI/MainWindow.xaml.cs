@@ -94,10 +94,6 @@ namespace MaiksLauncher
                     ThisThreadOptions = launchOptions;
                 });
 
-                
-
-                // to debug
-
                 var process = launcher.CreateProcess(selectedver, ThisThreadOptions);
                 process.Start();
 
