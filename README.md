@@ -1,5 +1,5 @@
 # MaiksLauncher
-100% C# custom Minecraft(R) launcher, with low end systems in mind (currently still uses alot of ram).
+100% C# custom Minecraft(R) launcher, with low end systems in mind.
 This Project uses CmlLib.Core, made by AlphaBs
 Link to source: https://github.com/AlphaBs/CmlLib.Core
 ### Recently added features 06/06/2020:
@@ -10,6 +10,7 @@ Link to source: https://github.com/AlphaBs/CmlLib.Core
 - Working settings menu.
 - Working server status (Mojang & a handful of your favorite servers).
 - Good CPU usage (around 1-10%) most of the times.
+- Uses not that much ram (90MB at max).
 ### To-do
 
 - [ ] Squash some bugs & exceptions.
