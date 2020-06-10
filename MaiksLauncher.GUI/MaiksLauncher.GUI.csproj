@@ -1,42 +1,67 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <Platforms>x86;x64;AnyCPU</Platforms>
-    <StartupObject>test.App</StartupObject>
+    <StartupObject>MaiksLauncher.GUI.App</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="2020-05-23_11.05.58.png" />
+    <None Remove="2020-05-23_11.06.16.png" />
+    <None Remove="hypixelLogo.png" />
+    <None Remove="i.png" />
+    <None Remove="img.png" />
+    <None Remove="minemenlogo.png" />
+    <None Remove="mineplex.png" />
     <None Remove="MojangSharp.dll" />
     <None Remove="MojangSharp.pdb" />
     <None Remove="MojangSharp.xml" />
     <None Remove="Newtonsoft.Json.dll" />
     <None Remove="Newtonsoft.Json.xml" />
+    <None Remove="Photos\2020-05-23_11.05.58.png" />
+    <None Remove="settingsblack.png" />
+    <None Remove="settingsWhite.png" />
+    <None Remove="Steve.png" />
+    <None Remove="wynncraftLogo.png" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
     <PackageReference Include="ChangFeng.MojangSharpCore" Version="0.0.1" />
-    <PackageReference Include="CmlLib.Core" Version="0.2.0" />
+    <PackageReference Include="CmlLib.Core" Version="2.0.2" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.19" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
 
     <ItemGroup>
       <PackageReference Include="System.Windows.Interactivity.WPF" Version="2.0.20525" />
-      <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
+      <PackageReference Include="CefSharp.Wpf" Version="81.3.100" />
     </ItemGroup>
 
 
     <ItemGroup>
-      <Reference Include="Authenticator">
-        <HintPath>Authenticator.dll</HintPath>
-      </Reference>
+      <ProjectReference Include="..\MaiksLauncher.Core\MaiksLauncher.Core.csproj" />
+    </ItemGroup>
+
+
+    <ItemGroup>
+      <Resource Include="hypixelLogo.png" />
+      <Resource Include="img.png" />
+      <Resource Include="minemenlogo.png" />
+      <Resource Include="mineplex.png" />
+      <Resource Include="Photos\2020-05-23_11.05.58.png" />
+      <Resource Include="Photos\2020-05-23_11.06.16.png" />
+      <Resource Include="Photos\i.png" />
+      <Resource Include="Photos\Steve.png" />
+      <Resource Include="wynncraftLogo.png" />
     </ItemGroup>
 
 
@@ -55,9 +80,8 @@
       </Reference>
       <Reference Update="dotMCLauncher.Yggdrasil">
         <HintPath>mcLib\dotMCLauncher.Yggdrasil.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
+		</Reference>
+		</ItemGroup>
     <ItemGroup>
       <!-- TODO: These updates are currently required because CefSharp.Wpf specifies
          <Private>false</Private>, which means these libraries will not be specified in
