@@ -7,6 +7,9 @@
     <Platforms>x86;x64;AnyCPU</Platforms>
     <StartupObject>MaiksLauncher.GUI.App</StartupObject>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
 
   <ItemGroup>
     <None Remove="2020-05-23_11.05.58.png" />
