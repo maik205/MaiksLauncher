@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
-using MaiksLauncher.Core;
 
 namespace MaiksLauncher.GUI
 {
@@ -43,7 +42,7 @@ namespace MaiksLauncher.GUI
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             loginPass = Password.Password;
-            var p = new MaiksLauncher.Core.MainCore();
+            var p = new MainCore();
 
             var session = p.Login(loginEmail, loginPass, true);
 

@@ -3,8 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:wpf="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
-
         mc:Ignorable="d"
         Title="MaiksLauncher" Height="436" Width="800" ResizeMode="NoResize" Icon="/Photos/Steve.png" Loaded="winactive">
     <Grid Margin="0,0,0,-16">

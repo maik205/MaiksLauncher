@@ -41,6 +41,10 @@ namespace MaiksLauncher
 
         private void MainWindow_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            if (e.LeftButton == MouseButtonState.Pressed)
+            {
+                this.DragMove();
+            }
         }
 
 
@@ -108,6 +112,7 @@ namespace MaiksLauncher
         }
         private void windowActive(object sender, RoutedEventArgs e)
         {
+            
             LaunchProgress.Opacity = 0;
             username.Text = " " + MainSession.Username;
             var th = new Thread(new ThreadStart(delegate

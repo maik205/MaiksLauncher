@@ -148,7 +148,7 @@
                 Height="24"
                 Width="24" VerticalAlignment="Center" />
         </Button>
-        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
+        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952" d:IsHidden="True">
             <TextBlock HorizontalAlignment="Left" Height="93" TextWrapping="Wrap" VerticalAlignment="Top" Width="897" Foreground="White" FontFamily="Corbel" FontWeight="Bold" FontSize="72" Margin="25,33,0,0"><Run Text="Welcome"/><Run x:Name="username" /></TextBlock>
             <Button Content="Launch" x:Name="LaunchButton" Margin="695,368,30,0" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Height="66" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Corbel" Click="LaunchClick"/>
             <ComboBox x:Name="versionList" 
@@ -158,7 +158,7 @@
                 <ComboBoxItem Foreground="White" Content="Choose the version"/>
             </ComboBox>
             <Label x:Name="LaunchLog" Content="" HorizontalAlignment="Left" Margin="131,393,0,0" VerticalAlignment="Top" Width="248"/>
-            <ProgressBar x:Name="LaunchProgress" Value="0" Foreground="White" HorizontalAlignment="Left" Height="1" Margin="132,420,0,0" VerticalAlignment="Top" Width="247" materialDesign:TransitionAssist.DisableTransitions="True" RenderTransformOrigin="0.5,0.5">
+            <ProgressBar x:Name="LaunchProgress" Value="0" Foreground="White" HorizontalAlignment="Left" Height="1" Margin="132,420,0,0" VerticalAlignment="Top" Width="247" materialDesign:TransitionAssist.DisableTransitions="True" RenderTransformOrigin="0.5,0.5" Opacity="0">
                 <ProgressBar.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>

@@ -4,12 +4,12 @@ using System;
 using System.ComponentModel;
 
 
-namespace MaiksLauncher.Core
+namespace MaiksLauncher.GUI
 {
     public class MainCore
     {
+        
         // initialize the logger
-        public static Logger MainLoggerWindow = new Logger();
 
         // strings
         private static string accessToken;
@@ -19,7 +19,7 @@ namespace MaiksLauncher.Core
         public static string offlineUsername;
         public static string GetAccessToken(string password, string email)
         {
-            var p = new MaiksLauncher.Core.MainCore();
+            var p = new MainCore();
             var session = p.Login(email, password, true);
             LoggerUpdate("[Auth] Started getting access token");
             return accessToken;
@@ -27,7 +27,7 @@ namespace MaiksLauncher.Core
 
         public static void Launch(string version, string email, string password)
         {
-            var p = new Core.MainCore();
+            var p = new MainCore();
             var session = p.Login(email, password, true);
             p.start(session, version);
         }
@@ -92,14 +92,12 @@ namespace MaiksLauncher.Core
 
         public static void LoggerUpdate(string UpdateText)
         {
-            MainLoggerWindow.Log.Text += UpdateText + Environment.NewLine;
         }
 
         public static void LoggerUpdateNoNewLine(string UpdateText)
         {
-            MainLoggerWindow.Log.Text += UpdateText;
         }
-
+        
 
     }
 }
