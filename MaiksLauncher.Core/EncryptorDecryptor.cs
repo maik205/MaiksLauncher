@@ -12,6 +12,44 @@ namespace MaiksLauncher.Core
         // This constant determines the number of iterations for the password bytes generation function.
         private const int DerivationIterations = 1000;
 
+        public static string Encryptv2(this string text, string key)
+        {
+            if (string.IsNullOrEmpty(key))
+                throw new ArgumentException("Key must have valid value.", nameof(key));
+            if (string.IsNullOrEmpty(text))
+                throw new ArgumentException("The text must have valid value.", nameof(text));
+
+            var buffer = Encoding.UTF8.GetBytes(text);
+            var hash = new SHA512CryptoServiceProvider();
+            var aesKey = new byte[24];
+            Buffer.BlockCopy(hash.ComputeHash(Encoding.UTF8.GetBytes(key)), 0, aesKey, 0, 24);
+
+            using (var aes = Aes.Create())
+            {
+                if (aes == null)
+                    throw new ArgumentException("Parameter must not be null.", nameof(aes));
+
+                aes.Key = aesKey;
+
+                using (var encryptor = aes.CreateEncryptor(aes.Key, aes.IV))
+                using (var resultStream = new MemoryStream())
+                {
+                    using (var aesStream = new CryptoStream(resultStream, encryptor, CryptoStreamMode.Write))
+                    using (var plainStream = new MemoryStream(buffer))
+                    {
+                        plainStream.CopyTo(aesStream);
+                    }
+
+                    var result = resultStream.ToArray();
+                    var combined = new byte[aes.IV.Length + result.Length];
+                    Array.ConstrainedCopy(aes.IV, 0, combined, 0, aes.IV.Length);
+                    Array.ConstrainedCopy(result, 0, combined, aes.IV.Length, result.Length);
+
+                    return Convert.ToBase64String(combined);
+                }
+            }
+        }
+
         public static string Encrypt(string plainText, string passPhrase)
         {
             // Salt and IV is randomly generated each time, but is preprended to encrypted cipher text
@@ -24,7 +62,7 @@ namespace MaiksLauncher.Core
                 var keyBytes = password.GetBytes(Keysize / 8);
                 using (var symmetricKey = new RijndaelManaged())
                 {
-                    symmetricKey.BlockSize = 256;
+                    symmetricKey.BlockSize = 128;
                     symmetricKey.Mode = CipherMode.CBC;
                     symmetricKey.Padding = PaddingMode.PKCS7;
                     using (var encryptor = symmetricKey.CreateEncryptor(keyBytes, ivStringBytes))
@@ -97,6 +135,6 @@ namespace MaiksLauncher.Core
             }
             return randomBytes;
         }
-        // Source: https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp thanks stackoverflow!
+        // Source: https://stackoverflow.com/questions/10168240/encrypting-decrypting-a-string-in-c-sharp and thanks stackoverflow!
     }
 }

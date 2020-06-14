@@ -96,14 +96,14 @@ namespace MaiksLauncher.Core
         public static void WriteAToken(string aToken, bool isEncrypted, string pass)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
-            if (File.Exists(path + @"ATokenEncrypted.txt") == false || Directory.Exists(path) == false && isEncrypted == true)
+            if (File.Exists(path + @"ATokenEncrypted.mat") == false || Directory.Exists(path) == false && isEncrypted == true)
             {
                 Directory.CreateDirectory(path);
-                File.CreateText(path + @"ATokenEncrypted.txt");
+                File.CreateText(path + @"ATokenEncrypted.mat");
             }
-            File.WriteAllText(path, String.Empty);
-            TextWriter tw = new StreamWriter(path + @"ATokenEncrypted.txt", true);
-            tw.WriteLine(EncryptorDecryptor.Encrypt(aToken,pass));
+            File.WriteAllText(path + @"ATokenEncrypted.mat", String.Empty);
+            TextWriter tw = new StreamWriter(path + @"ATokenEncrypted.mat", true);
+            tw.WriteLine(EncryptorDecryptor.Encryptv2(aToken,pass));
             tw.Close();
         }
 

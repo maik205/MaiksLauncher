@@ -175,7 +175,7 @@ namespace MaiksLauncher
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
         {
             playerinfoConfirm();
-            ReadWrite.WriteAToken(MainSession.AccessToken, false);
+            ReadWrite.WriteAToken(MainSession.AccessToken, true, "fuckyou");
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
