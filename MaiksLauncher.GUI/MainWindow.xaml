@@ -148,7 +148,20 @@
                 Height="24"
                 Width="24" VerticalAlignment="Center" />
         </Button>
-        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952" d:IsHidden="True">
+        <Grid x:Name="Confirm" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="489" VerticalAlignment="Top" Width="952" Margin="0,6,0,0" Grid.RowSpan="2" Visibility="Hidden">
+            <Rectangle HorizontalAlignment="Center" Height="496" Stroke="Black" VerticalAlignment="Top" Width="952" Fill="#FF292929"/>
+            <Label Content="You're accessing sensitive information, please confirm that you're a human.&#xA;" HorizontalAlignment="Left" Height="24" Margin="258,191,0,0" VerticalAlignment="Top" Width="494" Background="{x:Null}" Foreground="#DDFFFFFF"/>
+            <Rectangle HorizontalAlignment="Left" Height="110" Margin="258,215,0,0" VerticalAlignment="Top" Width="174">
+                <Rectangle.Fill>
+                    <ImageBrush ImageSource="/ask.png" Stretch="UniformToFill"/>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Image x:Name="humanTestImg" HorizontalAlignment="Left" Height="63" Margin="437,236,0,0" VerticalAlignment="Top" Width="226"/>
+            <TextBox x:Name="humanTestAnswer" materialDesign:HintAssist.Hint="Enter the text here" HorizontalAlignment="Left" Height="23" Margin="258,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Foreground="White" SelectionBrush="White" CaretBrush="#FF767676" BorderBrush="#89FFFFFF"/>
+            <Button Content="Submit" HorizontalAlignment="Left" Height="23" Margin="528,325,0,0" VerticalAlignment="Top" Width="101" IsDefault="True" Click="humanTestSubmit" Background="#FF292929" BorderBrush="{x:Null}"/>
+            <Label Content="If empty, enter mine in the text box" HorizontalAlignment="Left" Height="23" Margin="258,297,0,0" VerticalAlignment="Top" Width="292" Foreground="#DDFFFFFF"/>
+        </Grid>
+        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
             <TextBlock HorizontalAlignment="Left" Height="93" TextWrapping="Wrap" VerticalAlignment="Top" Width="897" Foreground="White" FontFamily="Corbel" FontWeight="Bold" FontSize="72" Margin="25,33,0,0"><Run Text="Welcome"/><Run x:Name="username" /></TextBlock>
             <Button Content="Launch" x:Name="LaunchButton" Margin="695,368,30,0" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Height="66" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Corbel" Click="LaunchClick"/>
             <ComboBox x:Name="versionList" 
@@ -228,8 +241,8 @@
             <TextBlock HorizontalAlignment="Center" Height="138" Margin="0,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="457"><Run Foreground="White" Text="This project uses CmlLib.Core for launching and initializing Minecraft(R) sessions"/><LineBreak/><Run Foreground="White" Text="This project also uses MaterialDesignInXAML for most of the UI Elements"/><LineBreak/><Run Foreground="White" Text="The source code for this project can be found at maikpla.github.io"/><LineBreak/><LineBreak/><Run Foreground="White" Text="Thank you so much for using MaiksLauncher! We 100% respect your privacy and do not store your password or email."/><LineBreak/><LineBreak/><Run Foreground="White" Text="This Project is licensed under the &quot;Unlicensed&quot; license, for more information, read the License file."/></TextBlock>
         </Grid>
         <Grid x:Name="PlayerInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="445" Grid.Row="1" VerticalAlignment="Center" Width="952" Visibility="Hidden">
-            <TextBlock HorizontalAlignment="Left" Height="204" Margin="198,19,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="604" Foreground="White" FontSize="18"><Run Text="Your name is " Foreground="White" FontSize="48"/> <Run x:Name="PlayerInfoName"/> <LineBreak/><Run Text="Access token: "/><Run x:Name="PlayerInfoAToken"/><LineBreak/><Run Text="UUID: "/><Run x:Name="PlayerInfoUUID"/><LineBreak/><Run Text="Client token: "/><Run x:Name="PlayerInfoClientToken"/></TextBlock>
-            <Button x:Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent"  Height="50" Margin="640,288,0,0" VerticalAlignment="Top" Width="162" Click="SignOutClick"/>
+            <TextBlock HorizontalAlignment="Left" Height="204" Margin="198,19,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="604" Foreground="White" FontSize="18" FontFamily="Corbel"><Run Text="Your name is " Foreground="White" FontSize="48"/> <Run x:Name="PlayerInfoName" FontSize="48" FontWeight="Bold"/> <LineBreak/><Run Text="           Access token: "/><Run x:Name="PlayerInfoAToken"/><LineBreak/><Run Text="           UUID: "/><Run x:Name="PlayerInfoUUID"/><LineBreak/><Run Text="           Client token: "/><Run x:Name="PlayerInfoClientToken"/><LineBreak/><Run Text="           NameMC link: "/><Hyperlink Foreground="White" NavigateUri="{Binding url}" x:Name="nameMCLink">Click here</Hyperlink></TextBlock>
+            <Button x:Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent"  Height="50" Margin="640,288,0,0" VerticalAlignment="Top" Width="162" Click="SignOutClick" FontFamily="Segoe UI"/>
         </Grid>
 
 

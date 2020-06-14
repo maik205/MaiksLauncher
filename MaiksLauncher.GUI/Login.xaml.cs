@@ -84,6 +84,8 @@ namespace MaiksLauncher
                     LoginStatus.Text = "Invalid characters in your username";
                     Progress.Opacity = 0;
                 }
+
+                MainWindowNew.ifOfflineMode = (bool) ifOffline.IsChecked;
             }
             else
             {

@@ -14,10 +14,14 @@ using System.Windows.Shapes;
 using CmlLib.Core;
 using System.Linq;
 using System.Net.NetworkInformation;
+using System.Windows.Navigation;
 using CmlLib;
 using MojangSharpCore;
 using MojangSharpCore.Endpoints;
 using MojangSharpCore.Responses;
+using System.Security.Cryptography;
+using System.Windows.Automation.Provider;
+using MaiksLauncher.Core;
 
 namespace MaiksLauncher
 {
@@ -34,6 +38,8 @@ namespace MaiksLauncher
             InitializeComponent();
             MouseDown += MainWindow_MouseDown;
         }
+
+        
 
         private CMLauncher launcher;
         //private string SelectedVersion;
@@ -115,6 +121,7 @@ namespace MaiksLauncher
             
             LaunchProgress.Opacity = 0;
             username.Text = " " + MainSession.Username;
+            string config = ReadWrite.ReadConfigAtLine(1);
             var th = new Thread(new ThreadStart(delegate
             {
                 var McPath = Minecraft.GetOSDefaultPath();
@@ -136,11 +143,14 @@ namespace MaiksLauncher
                     
                 }));
                 getStatus();
-
+                
             }));
+            string nameMcURL = "https://namemc.com/profile/" + MainSession.Username;
             th.Start();
+            nameMCLink.NavigateUri= new Uri(nameMcURL);
+            setUserInfo(MainSession);
         }
-
+        
         private void Launcher_FileChanged(DownloadFileChangedEventArgs e)
         {
             Dispatcher.Invoke(new Action(() =>
@@ -164,18 +174,8 @@ namespace MaiksLauncher
 
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
         {
-            PlayerInfo.Visibility = Visibility.Visible;
-            PlayerInfoButton.IsEnabled = false;
-            if (CurrentGrid == 0)
-            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true; }
-            else if (CurrentGrid == 2)
-            { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
-            else if (CurrentGrid == 3)
-            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true; }
-            else if (CurrentGrid == 4)
-            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
-            CurrentGrid = 1;
-
+            playerinfoConfirm();
+            ReadWrite.WriteAToken(MainSession.AccessToken, false);
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
@@ -359,7 +359,76 @@ namespace MaiksLauncher
             }
         }
 
+        public static bool ifOfflineMode;
+
+        private void setUserInfo(MSession session)
+        {
+            if (ifOfflineMode = false)
+            {
+                PlayerInfoName.Text = session.Username;
+                PlayerInfoAToken.Text = "(Offline)";
+                PlayerInfoClientToken.Text = "(Offline)";
+                PlayerInfoUUID.Text = "(Offline)";
+                
+            }
+            else
+            {
+                PlayerInfoName.Text = session.Username;
+                PlayerInfoAToken.Text = session.AccessToken;
+                PlayerInfoClientToken.Text = session.ClientToken;
+                PlayerInfoUUID.Text = session.UUID;
+            }
+            
+        }
+        string BaseAnswer;
+        int randomTest;
+        bool ifAnswerCorrect;
+        private void playerinfoConfirm()
+        {
+            if (CurrentGrid == 0)
+            { Home.Visibility = Visibility.Hidden; ; HomeButton.IsEnabled = true; }
+            else if (CurrentGrid == 2)
+            { Information.Visibility = Visibility.Hidden; ; InformationButton.IsEnabled = true; }
+            else if (CurrentGrid == 3)
+            { Status.Visibility = Visibility.Hidden; ; ServerStatusButton.IsEnabled = true; }
+            else if (CurrentGrid == 4)
+            { Settings.Visibility = Visibility.Hidden; ; SettingsButton.IsEnabled = true; }
+            Confirm.Visibility = Visibility.Visible;
+            Random rd = new Random();
+            
+            int i = 0;
+            while (i <= 21)
+            {
+                randomTest = rd.Next(1, 3);
+                i++;
+            }
+            
+            if (randomTest == 1) { BaseAnswer = "love"; humanTestImg.Source = new BitmapImage(new Uri(@"\test1.png", UriKind.Relative)); }
+            if (randomTest == 2) { BaseAnswer = "mine"; humanTestImg.Source = new BitmapImage(new Uri(@"\test2.png", UriKind.Relative)); }
+            
+        }
+
+        private void humanTestSubmit(object sender, RoutedEventArgs e)
+        {
+            if (humanTestAnswer.Text.Equals(BaseAnswer)) {
+                Confirm.Visibility = Visibility.Hidden;
+                PlayerInfo.Visibility = Visibility.Visible;
+                PlayerInfoButton.IsEnabled = false;
+                CurrentGrid = 1;
+            }
+            else
+            {
+                foreach(var process in Process.GetProcessesByName("MaiksLauncher.GUI"))
+                {
+                    process.Kill();
+                }
+                this.Close();
+            }
+            
+        }
+    }
+
 
     }
-    }
+    
 

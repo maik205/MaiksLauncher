@@ -52,10 +52,10 @@ namespace MaiksLauncher.Core
         {
 
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
-            if (File.Exists(path + @"config.txt") == false)
+            if (File.Exists(path + @"config.mcf") == false)
             {
                 Directory.CreateDirectory(path);
-                using (StreamWriter sw = File.CreateText(path + @"config.txt"))
+                using (StreamWriter sw = File.CreateText(path + @"config.mcf"))
                 {
                     sw.WriteLine("maxRamMB=");
                     sw.WriteLine("defaultVersion");
@@ -71,7 +71,7 @@ namespace MaiksLauncher.Core
             try
             {
 
-                using (StreamReader inputFile = new StreamReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Config.txt")))
+                using (StreamReader inputFile = new StreamReader(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Config.mcf")))
                 { for (int i = 1; i < line; i++) {inputFile.ReadLine();}  Setting = inputFile.ReadLine(); }
             }
             catch (IOException e) { Setting = "Error: " + e.Message; }
@@ -83,13 +83,13 @@ namespace MaiksLauncher.Core
         public static void WriteAToken(string aToken ,bool isEncrypted)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
-            if (File.Exists(path + @"ATokenNonEncrypted.txt") == false || Directory.Exists(path) == false && isEncrypted == false)
+            if (File.Exists(path + @"ATokenNonEncrypted.mat") == false || Directory.Exists(path) == false && isEncrypted == false)
             {
                 Directory.CreateDirectory(path);
-                File.CreateText(path + @"ATokenNonEncrypted.txt");
+                File.CreateText(path + @"ATokenNonEncrypted.mat");
             }
-            File.WriteAllText(path, String.Empty);
-            TextWriter tw = new StreamWriter(path + @"ATokenNonEncrypted.txt", true);
+            File.WriteAllText(path + @"ATokenNonEncrypted.mat", String.Empty);
+            TextWriter tw = new StreamWriter(path + @"ATokenNonEncrypted.mat", true);
             tw.WriteLine(aToken);
             tw.Close();
         }
@@ -106,5 +106,6 @@ namespace MaiksLauncher.Core
             tw.WriteLine(EncryptorDecryptor.Encrypt(aToken,pass));
             tw.Close();
         }
+
     }
     }
