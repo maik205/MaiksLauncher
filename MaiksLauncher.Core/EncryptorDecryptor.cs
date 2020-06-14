@@ -127,7 +127,7 @@ namespace MaiksLauncher.Core
 
         private static byte[] Generate256BitsOfRandomEntropy()
         {
-            var randomBytes = new byte[32]; // 32 Bytes will give us 256 bits.
+            var randomBytes = new byte[16]; // 32 Bytes will give us 256 bits.
             using (var rngCsp = new RNGCryptoServiceProvider())
             {
                 // Fill the array with cryptographically secure random bytes.

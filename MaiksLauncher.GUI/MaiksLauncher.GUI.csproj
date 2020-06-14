@@ -18,6 +18,7 @@
     <None Remove="hypixelLogo.png" />
     <None Remove="i.png" />
     <None Remove="img.png" />
+    <None Remove="logo.png" />
     <None Remove="minemenlogo.png" />
     <None Remove="mineplex.png" />
     <None Remove="MojangSharp.dll" />
@@ -48,6 +49,7 @@
     <ItemGroup>
       <Resource Include="ask.png" />
       <Resource Include="img.png" />
+      <Resource Include="logo.png" />
       <Resource Include="minemenlogo.png" />
       <Resource Include="mineplex.png" />
       <Resource Include="Photos\2020-05-23_11.05.58.png" />

@@ -112,7 +112,7 @@
         </Button>
         <Button
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            x:Name="PlayerInfoButton" ToolTip="Skins" Margin="732,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="PlayerInfoClick">
+            x:Name="PlayerInfoButton" ToolTip="Your information" Margin="732,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="PlayerInfoClick">
             <materialDesign:PackIcon
                 
                 Kind="Face"

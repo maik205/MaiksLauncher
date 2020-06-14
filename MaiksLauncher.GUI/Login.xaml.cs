@@ -29,6 +29,7 @@ namespace MaiksLauncher
         }
 
         private MSession Session;
+        // will be used later to store user's info
         private bool isEncrypted = false;
 
         private void SignIn(object sender, RoutedEventArgs e)

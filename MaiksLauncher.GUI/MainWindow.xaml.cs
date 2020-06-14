@@ -56,6 +56,7 @@ namespace MaiksLauncher
 
         private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
+            saveInfo();
             foreach (var process in Process.GetProcessesByName("MaiksLauncher.GUI"))
             {
                 process.Kill();
@@ -121,7 +122,7 @@ namespace MaiksLauncher
             
             LaunchProgress.Opacity = 0;
             username.Text = " " + MainSession.Username;
-            string config = ReadWrite.ReadConfigAtLine(1);
+            string config = ReadWrite.ReadConfig(1);
             var th = new Thread(new ThreadStart(delegate
             {
                 var McPath = Minecraft.GetOSDefaultPath();
@@ -175,7 +176,6 @@ namespace MaiksLauncher
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
         {
             playerinfoConfirm();
-            ReadWrite.WriteAToken(MainSession.AccessToken, true, "fuckyou");
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
@@ -426,6 +426,43 @@ namespace MaiksLauncher
             }
             
         }
+
+        private void saveInfo()
+        {
+            ReadWrite.WriteConfigByLine(MaxMemSlider.Value.ToString(), 1);
+            if (!string.IsNullOrEmpty(CustomArgsBox.Text))
+            {
+                ReadWrite.WriteConfigByLine(CustomArgsBox.Text,4);
+            }
+
+            if (!string.IsNullOrEmpty(JavaPathBox.Text))
+            {
+                ReadWrite.WriteConfigByLine(JavaPathBox.Text, 3);
+            }
+
+            if (!string.IsNullOrEmpty(ServerIPBox.Text))
+            {
+                ReadWrite.WriteConfigByLine(ServerIPBox.Text, 9);
+            }
+
+            if (!string.IsNullOrEmpty(ScreenHeightBox.Text))
+            {
+                ReadWrite.WriteConfigByLine(ScreenHeightBox.Text, 11);
+            }
+
+            if (!string.IsNullOrEmpty(ScreenWidthBox.Text))
+            {
+                ReadWrite.WriteConfigByLine(ScreenWidthBox.Text,10);
+            }
+        }
+
+        private void loadInfo()
+        {
+            MaxMemSlider.Value = Convert.ToInt32(ReadWrite.ReadConfig(1));
+            
+        }
+
+
     }
 
 
