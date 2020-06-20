@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -125,31 +126,19 @@ namespace MaiksLauncher
             string config = ReadWrite.ReadConfig(1);
             var th = new Thread(new ThreadStart(delegate
             {
-                var McPath = Minecraft.GetOSDefaultPath();
-                launcher = new CMLauncher(McPath);
-
-                // you must write this because of cmllib.core bug. it will be fixed soon
-                launcher.ProgressChanged += Launcher_ProgressChanged;
-                launcher.FileChanged += Launcher_FileChanged;
-
-                launcher.UpdateProfiles(); // this code will block ui, so it should run in thread
-
-                Dispatcher.BeginInvoke(new Action(delegate // call UI Thread
+                
+                Application.Current.Dispatcher.Invoke(delegate
                 {
-                    foreach (var item in launcher.Profiles)
-                    {
-                        if (item.MType == MProfileType.Release || item.MType == MProfileType.Custom)
-                            versionList.Items.Add(item.Name);
-                    }
-                    
-                }));
+                    reloadVersions();
+                    loadInfo();
+                });
                 getStatus();
                 
             }));
-            string nameMcURL = "https://namemc.com/profile/" + MainSession.Username;
             th.Start();
+            string nameMcURL = "https://namemc.com/profile/" + MainSession.Username;
             nameMCLink.NavigateUri= new Uri(nameMcURL);
-            setUserInfo(MainSession);
+            
         }
         
         private void Launcher_FileChanged(DownloadFileChangedEventArgs e)
@@ -363,7 +352,7 @@ namespace MaiksLauncher
 
         private void setUserInfo(MSession session)
         {
-            if (ifOfflineMode = false)
+            if (ifOfflineMode != false)
             {
                 PlayerInfoName.Text = session.Username;
                 PlayerInfoAToken.Text = "(Offline)";
@@ -382,7 +371,6 @@ namespace MaiksLauncher
         }
         string BaseAnswer;
         int randomTest;
-        bool ifAnswerCorrect;
         private void playerinfoConfirm()
         {
             if (CurrentGrid == 0)
@@ -458,11 +446,61 @@ namespace MaiksLauncher
 
         private void loadInfo()
         {
-            MaxMemSlider.Value = Convert.ToInt32(ReadWrite.ReadConfig(1));
-            
+            string MaxMem = ReadWrite.ReadConfig(2);
+            int maxMem = Convert.ToInt32(MaxMem);
+            MaxMemSlider.Value = maxMem;
+            foreach (string ver in ReadWrite.LoadVersionList())
+            {
+                versionList.Items.Add(ver);
+            }
+            CustomArgsBox.Text = ReadWrite.ReadConfig(4);
+            int verIndex = versionList.Items.IndexOf(ReadWrite.ReadConfig(2));
+            versionList.SelectedIndex = verIndex;
+            ScreenWidthBox.Text = ReadWrite.ReadConfig(19);
+            ScreenHeightBox.Text = ReadWrite.ReadConfig(11);
+            JavaPathBox.Text = ReadWrite.ReadConfig(3);
         }
 
+        private void reloadVersions()
+        {
+            
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+            File.WriteAllText(path + @"VersionList.mvl", String.Empty);
+            var McPath = Minecraft.GetOSDefaultPath();
+            launcher = new CMLauncher(McPath);
+            // you must write this because of cmllib.core bug. it will be fixed soon
+            launcher.ProgressChanged += Launcher_ProgressChanged;
+            launcher.FileChanged += Launcher_FileChanged;
+            launcher.UpdateProfiles(); 
+            string[] vers = new string[launcher.Profiles.Length];// this code will block ui, so it should run in thread
+            int index = 0;
+            foreach (var profile in launcher.Profiles)
+            {
+                vers[index] = profile.Name;
+            }
 
+            StreamWriter sw = new StreamWriter(path + @"VersionList.mvl");
+            foreach (string VARIABLE in vers)
+            {
+                sw.WriteLine(VARIABLE);
+            }
+            sw.Close();
+            Application.Current.Dispatcher.Invoke(delegate
+            {
+                versionList.Items.Clear();
+                foreach (string ver in vers)
+                {
+                    versionList.Items.Add(ver);
+                }
+            });
+        }
+
+        private void testSubmit(object sender, RoutedEventArgs e)
+        {
+            string test = ReadWrite.ReadConfig(Convert.ToInt32(configLine.Text));
+            configReaded.Content = test;
+            configLength.Content = test.Length;
+        }
     }
 
 

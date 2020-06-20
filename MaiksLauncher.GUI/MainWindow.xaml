@@ -244,6 +244,10 @@
             <TextBlock HorizontalAlignment="Left" Height="204" Margin="198,19,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="604" Foreground="White" FontSize="18" FontFamily="Corbel"><Run Text="Your name is " Foreground="White" FontSize="48"/> <Run x:Name="PlayerInfoName" FontSize="48" FontWeight="Bold"/> <LineBreak/><Run Text="           Access token: "/><Run x:Name="PlayerInfoAToken"/><LineBreak/><Run Text="           UUID: "/><Run x:Name="PlayerInfoUUID"/><LineBreak/><Run Text="           Client token: "/><Run x:Name="PlayerInfoClientToken"/><LineBreak/><Run Text="           NameMC link: "/><Hyperlink Foreground="White" NavigateUri="{Binding url}" x:Name="nameMCLink">Click here</Hyperlink></TextBlock>
             <Button x:Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent"  Height="50" Margin="640,288,0,0" VerticalAlignment="Top" Width="162" Click="SignOutClick" FontFamily="Segoe UI"/>
         </Grid>
+        <Label x:Name="configReaded" Content="Label" HorizontalAlignment="Left" Margin="190,160,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Width="335"/>
+        <Label x:Name="configLength" Content="Label" HorizontalAlignment="Left" Margin="190,186,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1"/>
+        <TextBox x:Name="configLine" HorizontalAlignment="Left" Margin="190,214,0,0" Text="TextBox" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" Grid.Row="1"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="368,210,0,0" VerticalAlignment="Top" Grid.Column="1" Grid.Row="1" Click="testSubmit"/>
 
 
     </Grid>
