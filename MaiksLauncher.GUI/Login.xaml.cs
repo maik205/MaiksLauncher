@@ -29,6 +29,7 @@ namespace MaiksLauncher
         }
 
         private MSession Session;
+        // will be used later to store user's info
         private bool isEncrypted = false;
 
         private void SignIn(object sender, RoutedEventArgs e)
@@ -75,6 +76,7 @@ namespace MaiksLauncher
                 Regex r = new Regex("^[a-zA-Z0-9_]+$");
                 if (r.IsMatch(Email.Text))
                 {
+                    MainWindowNew.ifOfflineMode = (bool)ifOffline.IsChecked;
                     MainWindowNew mw = new MainWindowNew(MSession.GetOfflineSession(Email.Text));
                     mw.Show();
                     this.Close();
@@ -85,7 +87,7 @@ namespace MaiksLauncher
                     Progress.Opacity = 0;
                 }
 
-                MainWindowNew.ifOfflineMode = (bool) ifOffline.IsChecked;
+                
             }
             else
             {

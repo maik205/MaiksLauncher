@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:MaiksLauncher"
         mc:Ignorable="d"
-        Title="Login - MaiksLauncher" Height="502" Width="952" ResizeMode="NoResize" Loaded="LoginActive">
+        Title="Login - MaiksLauncher" Height="502" Width="952" ResizeMode="NoResize" Loaded="LoginActive" Icon="/logo.png">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="162*"/>

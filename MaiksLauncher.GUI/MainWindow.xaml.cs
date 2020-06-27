@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Text;
 using System.Threading;
 using System.Windows;
@@ -56,6 +57,7 @@ namespace MaiksLauncher
 
         private void PowerButton_Click(object sender, RoutedEventArgs e)
         {
+            saveInfo();
             foreach (var process in Process.GetProcessesByName("MaiksLauncher.GUI"))
             {
                 process.Kill();
@@ -68,7 +70,7 @@ namespace MaiksLauncher
             LaunchProgress.Opacity = 100;
             var th = new Thread(new ThreadStart(delegate
             {
-                var selectedver = "";
+                string selectedver = "";
 
                 Application.Current.Dispatcher.Invoke((Action)delegate {
                     LaunchButton.IsEnabled = false;
@@ -103,7 +105,9 @@ namespace MaiksLauncher
                     };
                     ThisThreadOptions = launchOptions;
                 });
-
+                CMLauncher launcher = new CMLauncher(Minecraft.GetOSDefaultPath());
+                launcher.ProgressChanged += Launcher_ProgressChanged;
+                launcher.FileChanged += Launcher_FileChanged;
                 var process = launcher.CreateProcess(selectedver, ThisThreadOptions);
                 process.Start();
 
@@ -121,34 +125,32 @@ namespace MaiksLauncher
             
             LaunchProgress.Opacity = 0;
             username.Text = " " + MainSession.Username;
-            string config = ReadWrite.ReadConfigAtLine(1);
+            string config = ReadWrite.ReadConfig(1);
             var th = new Thread(new ThreadStart(delegate
             {
-                var McPath = Minecraft.GetOSDefaultPath();
-                launcher = new CMLauncher(McPath);
-
-                // you must write this because of cmllib.core bug. it will be fixed soon
-                launcher.ProgressChanged += Launcher_ProgressChanged;
-                launcher.FileChanged += Launcher_FileChanged;
-
-                launcher.UpdateProfiles(); // this code will block ui, so it should run in thread
-
-                Dispatcher.BeginInvoke(new Action(delegate // call UI Thread
+                
+                Application.Current.Dispatcher.Invoke(delegate
                 {
-                    foreach (var item in launcher.Profiles)
-                    {
-                        if (item.MType == MProfileType.Release || item.MType == MProfileType.Custom)
-                            versionList.Items.Add(item.Name);
-                    }
-                    
-                }));
+                    loadInfo();
+                });
                 getStatus();
                 
             }));
-            string nameMcURL = "https://namemc.com/profile/" + MainSession.Username;
             th.Start();
-            nameMCLink.NavigateUri= new Uri(nameMcURL);
-            setUserInfo(MainSession);
+            PlayerInfoName.Text = MainSession.Username;
+            if (ifOfflineMode == false)
+            {
+                PlayerInfoAToken.Text = MainSession.AccessToken;
+                PlayerInfoUUID.Text = MainSession.UUID;
+                PlayerInfoClientToken.Text = MainSession.ClientToken;
+            }
+            else
+            {
+                PlayerInfoAToken.Text = "(Offline)";
+                PlayerInfoUUID.Text = "(Offline)";
+                PlayerInfoClientToken.Text = "(Offline)";
+            }
+            
         }
         
         private void Launcher_FileChanged(DownloadFileChangedEventArgs e)
@@ -175,7 +177,6 @@ namespace MaiksLauncher
         private void PlayerInfoClick(object sender, RoutedEventArgs e)
         {
             playerinfoConfirm();
-            ReadWrite.WriteAToken(MainSession.AccessToken, true, "fuckyou");
         }
 
         private void InfoClick(object sender, RoutedEventArgs e)
@@ -363,7 +364,7 @@ namespace MaiksLauncher
 
         private void setUserInfo(MSession session)
         {
-            if (ifOfflineMode = false)
+            if (ifOfflineMode == false)
             {
                 PlayerInfoName.Text = session.Username;
                 PlayerInfoAToken.Text = "(Offline)";
@@ -382,7 +383,6 @@ namespace MaiksLauncher
         }
         string BaseAnswer;
         int randomTest;
-        bool ifAnswerCorrect;
         private void playerinfoConfirm()
         {
             if (CurrentGrid == 0)
@@ -426,51 +426,38 @@ namespace MaiksLauncher
             }
             
         }
-
         private void saveInfo()
         {
             ReadWrite.WriteConfigByLine(MaxMemSlider.Value.ToString(), 1);
-            if (!string.IsNullOrEmpty(CustomArgsBox.Text))
-            {
-                ReadWrite.WriteConfigByLine(CustomArgsBox.Text,4);
-            }
-
-            if (!string.IsNullOrEmpty(JavaPathBox.Text))
-            {
-                ReadWrite.WriteConfigByLine(JavaPathBox.Text, 3);
-            }
-
-            if (!string.IsNullOrEmpty(ServerIPBox.Text))
-            {
-                ReadWrite.WriteConfigByLine(ServerIPBox.Text, 9);
-            }
-
-            if (!string.IsNullOrEmpty(ScreenHeightBox.Text))
-            {
-                ReadWrite.WriteConfigByLine(ScreenHeightBox.Text, 11);
-            }
-
-            if (!string.IsNullOrEmpty(ScreenWidthBox.Text))
-            {
-                ReadWrite.WriteConfigByLine(ScreenWidthBox.Text,10);
-            }
+            ReadWrite.WriteConfigByLine(CustomArgsBox.Text,4);
+            ReadWrite.WriteConfigByLine(JavaPathBox.Text, 3);
+            ReadWrite.WriteConfigByLine(ServerIPBox.Text, 9);
+            ReadWrite.WriteConfigByLine(ScreenHeightBox.Text, 11);
+            ReadWrite.WriteConfigByLine(ScreenWidthBox.Text,10);
+            
         }
 
         private void loadInfo()
         {
-            string MaxMem = ReadWrite.ReadConfig(1);
-            int maxMem = Convert.ToInt32(MaxMem);
-            MaxMemSlider.Value = maxMem;
+            string MaxMem = ReadWrite.ReadConfig(2);
+            try
+            {
+                int maxMem = Convert.ToInt32(MaxMem);
+                MaxMemSlider.Value = maxMem;
+            }
+            catch { MaxMemSlider.Value = 1024; }
+            versionList.Items.Clear();
             foreach (string ver in ReadWrite.LoadVersionList())
             {
                 versionList.Items.Add(ver);
             }
-            CustomArgsBox.Text = ReadWrite.ReadConfig(4);
-            int verIndex = versionList.Items.IndexOf(ReadWrite.ReadConfig(2));
+            CustomArgsBox.Text = ReadWrite.ReadConfig(5);
+            int verIndex = versionList.Items.IndexOf(ReadWrite.ReadConfig(3));
             versionList.SelectedIndex = verIndex;
-            ScreenWidthBox.Text = ReadWrite.ReadConfig(19);
-            ScreenHeightBox.Text = ReadWrite.ReadConfig(11);
-            JavaPathBox.Text = ReadWrite.ReadConfig(3);
+            ScreenWidthBox.Text = ReadWrite.ReadConfig(11);
+            ServerIPBox.Text = ReadWrite.ReadConfig(10);
+            ScreenHeightBox.Text = ReadWrite.ReadConfig(12);
+            JavaPathBox.Text = ReadWrite.ReadConfig(4);
         }
 
         private void reloadVersions()
@@ -483,13 +470,18 @@ namespace MaiksLauncher
             // you must write this because of cmllib.core bug. it will be fixed soon
             launcher.ProgressChanged += Launcher_ProgressChanged;
             launcher.FileChanged += Launcher_FileChanged;
-            launcher.UpdateProfiles(); 
-            string[] vers = new string[launcher.Profiles.Length];// this code will block ui, so it should run in thread
+            launcher.UpdateProfiles();
+            int MTypeAmount = 0;
+            foreach (var profile in launcher.Profiles)
+            {
+                if (profile.MType == MProfileType.Release) { MTypeAmount++; }
+            }
+            string[] vers = new string[MTypeAmount];// this code will block ui, so it should run in thread
             int index = 0;
             foreach (var profile in launcher.Profiles)
             {
-                vers[index] = profile.Name;
-                index++;
+                if (profile.MType == MProfileType.Release) { vers[index] = profile.Name; index++; }
+                
             }
 
             StreamWriter sw = new StreamWriter(path + @"VersionList.mvl");
@@ -508,15 +500,18 @@ namespace MaiksLauncher
             });
         }
 
-        private void testSubmit(object sender, RoutedEventArgs e)
+        private void ReloadClicked(object sender, RoutedEventArgs e)
         {
-            string test = ReadWrite.ReadConfig(Convert.ToInt32(configLine.Text));
-            configReaded.Content = test;
-            configLength.Content = test.Length;
+            reloadVersions();
+        }
+
+        private void ClearClick(object sender, RoutedEventArgs e)
+        {
+            versionList.Items.Remove(versionList.SelectedIndex);
         }
     }
 
 
-    }
+  }
     
 

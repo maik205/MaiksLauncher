@@ -112,7 +112,7 @@
         </Button>
         <Button
             Style="{StaticResource MaterialDesignFloatingActionButton}"
-            x:Name="PlayerInfoButton" ToolTip="Skins" Margin="732,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="PlayerInfoClick">
+            x:Name="PlayerInfoButton" ToolTip="Your information" Margin="732,0,0,0" HorizontalAlignment="Left" Width="40" Height="40" VerticalAlignment="Center" Grid.Column="1" Background="{x:Null}" BorderBrush="{x:Null}" Click="PlayerInfoClick">
             <materialDesign:PackIcon
                 
                 Kind="Face"
@@ -157,8 +157,8 @@
                 </Rectangle.Fill>
             </Rectangle>
             <Image x:Name="humanTestImg" HorizontalAlignment="Left" Height="63" Margin="437,236,0,0" VerticalAlignment="Top" Width="226"/>
-            <TextBox x:Name="humanTestAnswer" materialDesign:HintAssist.Hint="Enter the text here" HorizontalAlignment="Left" Height="23" Margin="258,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Foreground="White" SelectionBrush="White" CaretBrush="#FF767676" BorderBrush="#89FFFFFF"/>
-            <Button Content="Submit" HorizontalAlignment="Left" Height="23" Margin="528,325,0,0" VerticalAlignment="Top" Width="101" IsDefault="True" Click="humanTestSubmit" Background="#FF292929" BorderBrush="{x:Null}"/>
+            <TextBox x:Name="humanTestAnswer" materialDesign:HintAssist.Hint="Enter the text here" HorizontalAlignment="Left" Height="30" Margin="258,325,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Foreground="White" SelectionBrush="White" CaretBrush="#FF767676" BorderBrush="#89FFFFFF"/>
+            <Button Content="Submit" HorizontalAlignment="Left" Height="30" Margin="528,325,0,0" VerticalAlignment="Top" Width="101" IsDefault="True" Click="humanTestSubmit" Background="#FF292929" BorderBrush="{x:Null}"/>
             <Label Content="If empty, enter mine in the text box" HorizontalAlignment="Left" Height="23" Margin="258,297,0,0" VerticalAlignment="Top" Width="292" Foreground="#DDFFFFFF"/>
         </Grid>
         <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
@@ -181,14 +181,26 @@
                     </TransformGroup>
                 </ProgressBar.RenderTransform>
             </ProgressBar>
+            <Button x:Name="ClearButton" Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="409,404,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Click="ClearClick">
+                <materialDesign:PackIcon
+                Kind="Clear"
+                Height="10"
+                Width="10" />
+            </Button>
+            <Button x:Name="ReloadButton" Style="{StaticResource MaterialDesignFloatingActionButton}" HorizontalAlignment="Left" Margin="374,404,0,0" VerticalAlignment="Top" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Width="30" Click="ReloadClicked">
+                <materialDesign:PackIcon
+                    Kind="Reload"
+                    Height="10"
+                    Width="10" />
+            </Button>
         </Grid>
         <Grid x:Name="Settings" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="443" Margin="0,2,0,0" Grid.Row="1" VerticalAlignment="Top" Width="952" Visibility="Hidden">
-            <Slider x:Name="MaxMemSlider" HorizontalAlignment="Left" Minimum="1024" Margin="201,10,0,0" VerticalAlignment="Top" Width="708" Height="51" Foreground="Black" BorderBrush="Black" Maximum="8096" Style="{StaticResource MaterialDesignDiscreteSlider}" Value="1024" ToolTip="MaterialDesignDiscreteSlider"/>
-            <TextBox x:Name="JavaPathBox" materialDesign:HintAssist.Hint="The path to your javaw.exe file" HorizontalAlignment="Left" Height="25" Margin="201,115,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
-            <TextBox x:Name="CustomArgsBox" materialDesign:HintAssist.Hint="Set JVM parameter. If this property is null, use default JVM parameter." HorizontalAlignment="Left" Height="25" Margin="201,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
-            <TextBox x:Name="ServerIPBox" materialDesign:HintAssist.Hint="Connect to server directly when minecraft loading is done." HorizontalAlignment="Left" Height="25" Margin="201,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
-            <TextBox x:Name="ScreenWidthBox" materialDesign:HintAssist.Hint="Width" HorizontalAlignment="Left" Height="25" Margin="201,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
-            <TextBox x:Name="ScreenHeightBox" materialDesign:HintAssist.Hint="Height" HorizontalAlignment="Left" Height="25" Margin="288,340,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <Slider x:Name="MaxMemSlider" HorizontalAlignment="Left" Minimum="1024" Margin="201,10,0,0" VerticalAlignment="Top" Width="708" Height="51" Foreground="Black" BorderBrush="Black" Maximum="8096" Style="{StaticResource MaterialDesignDiscreteSlider}" Value="1024" ToolTip="The maximium memory that Minecraft could use."/>
+            <TextBox x:Name="JavaPathBox" materialDesign:HintAssist.Hint="The path to your javaw.exe file" HorizontalAlignment="Left" Height="30" Margin="201,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="CustomArgsBox" materialDesign:HintAssist.Hint="Set JVM parameter. If this property is null, use default JVM parameter." HorizontalAlignment="Left" Height="30" Margin="201,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="ServerIPBox" materialDesign:HintAssist.Hint="Connect to server directly when minecraft loading is done." HorizontalAlignment="Left" Height="28" Margin="201,258,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="708" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="ScreenWidthBox" materialDesign:HintAssist.Hint="Width" HorizontalAlignment="Left" Height="30" Margin="201,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
+            <TextBox x:Name="ScreenHeightBox" materialDesign:HintAssist.Hint="Height" HorizontalAlignment="Left" Height="30" Margin="291,330,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="65" BorderBrush="#89FFFFFF" Foreground="White" Background="Transparent"/>
             <Label Content="Maximium memory" HorizontalAlignment="Left" Height="21" Margin="44,40,0,0" VerticalAlignment="Top" Width="135" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
             <Label Content="Java Path" HorizontalAlignment="Left" Height="21" Margin="44,115,0,0" VerticalAlignment="Top" Width="135" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
             <Label Content="Custom JVM Arguments" HorizontalAlignment="Left" Height="21" Margin="44,191,0,0" VerticalAlignment="Top" Width="135" Foreground="#DDFFFFFF" FontFamily="Corbel" FontWeight="Normal"/>
