@@ -426,7 +426,6 @@ namespace MaiksLauncher
             }
             
         }
-
         private void saveInfo()
         {
             ReadWrite.WriteConfigByLine(MaxMemSlider.Value.ToString(), 1);
