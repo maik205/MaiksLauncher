@@ -58,6 +58,7 @@ namespace MaiksLauncher.Core
                 Directory.CreateDirectory(path);
                 using (StreamWriter sw = File.CreateText(path + @"config.mcf"))
                 {
+                    sw.WriteLine("=null");
                     sw.WriteLine("maxRamMB=1024");
                     sw.WriteLine("defaultVersion=");
                     sw.WriteLine("specialPath=");
@@ -77,7 +78,7 @@ namespace MaiksLauncher.Core
             {
 
                 using (StreamReader inputFile = new StreamReader(path + @"config.mcf"))
-                { for (int i = 1; i < ConfigIndex && ConfigIndex < 10; i++) { inputFile.ReadLine(); } Setting = inputFile.ReadLine(); }
+                { for (int i = 1; i < ConfigIndex && ConfigIndex < 14; i++) { inputFile.ReadLine(); } Setting = inputFile.ReadLine(); }
 
                 bool ifFindEqualSign = false;
                 char[] unprocessedStringChars = Setting.ToCharArray();
