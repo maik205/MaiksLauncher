@@ -18,10 +18,10 @@ Link to source: https://github.com/AlphaBs/CmlLib.Core
 ### To-do
 
 - [ ] Squash some bugs & exceptions.
-- [ ] Implement the code needed for the user's login cache.
+- [x] Implement the code needed for the user's login cache.
 - [ ] Improve performance, optimize the memory usage.
-- [ ] Save user's settings on exit.
+- [x] Save user's settings on exit.
 - [ ] User interface customization (Background, Foreground, style,..etc).
-- [ ] Make the versions only reset after the user press some kind of update button.
+- [x] Make the versions only reset after the user press some kind of update button.
 - [ ] Make the GUI more intuitive and fluid.
 - [ ] Skins (Currently not important).
