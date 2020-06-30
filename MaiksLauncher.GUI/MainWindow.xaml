@@ -12,7 +12,7 @@
         TextOptions.TextRenderingMode="Auto"
         FontFamily="{DynamicResource MaterialDesignFont}"
         mc:Ignorable="d"
-        Title="MainWindowNew" Height="496" Width="952" ResizeMode="NoResize" WindowStyle="None" Loaded="windowActive">
+        Title="MainWindowNew" Height="496" Width="952" ResizeMode="CanMinimize" WindowStyle="None" Loaded="windowActive">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">
@@ -162,12 +162,16 @@
             <Label Content="If empty, enter mine in the text box" HorizontalAlignment="Left" Height="23" Margin="258,297,0,0" VerticalAlignment="Top" Width="292" Foreground="#DDFFFFFF"/>
         </Grid>
         <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
-            <TextBlock HorizontalAlignment="Left" Height="93" TextWrapping="Wrap" VerticalAlignment="Top" Width="897" Foreground="White" FontFamily="Corbel" FontWeight="Bold" FontSize="72" Margin="25,33,0,0"><Run Text="Welcome"/><Run x:Name="username" /></TextBlock>
-            <Button Content="Launch" x:Name="LaunchButton" Margin="695,368,30,0" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Height="66" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Corbel" Click="LaunchClick"/>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="229*"/>
+                <ColumnDefinition Width="247*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock HorizontalAlignment="Left" Height="93" TextWrapping="Wrap" VerticalAlignment="Top" Width="897" Foreground="White" FontFamily="Corbel" FontWeight="Bold" FontSize="72" Margin="25,33,0,0" Grid.ColumnSpan="2"><Run Text="Welcome"/><Run x:Name="username" /></TextBlock>
+            <Button Content="Launch" x:Name="LaunchButton" Margin="237,368,30,0" Background="Transparent" BorderBrush="{x:Null}" Foreground="White" Height="66" VerticalAlignment="Top" FontSize="16" FontWeight="Bold" FontFamily="Corbel" Click="LaunchClick" Grid.Column="1"/>
             <ComboBox x:Name="versionList" 
                       materialDesign:TextFieldAssist.UnderlineBrush="{DynamicResource SecondaryAccentBrush}"
                       materialDesign:ColorZoneAssist.Mode="Inverted"
-                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="66" Margin="450,368,0,0" VerticalAlignment="Top" Width="216" Background="Transparent" Foreground="White" SelectedIndex="0" FontFamily="Corbel" FontWeight="Bold" FontSize="16">
+                      HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Left" Height="66" Margin="450,368,0,0" VerticalAlignment="Top" Width="216" Background="Transparent" Foreground="White" SelectedIndex="0" FontFamily="Corbel" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="2">
                 <ComboBoxItem Foreground="White" Content="Choose the version"/>
             </ComboBox>
             <Label x:Name="LaunchLog" Content="" HorizontalAlignment="Left" Margin="131,393,0,0" VerticalAlignment="Top" Width="248"/>

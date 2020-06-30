@@ -230,4 +230,4 @@ namespace MaiksLauncher.Core
         }
         
     }
-    }
+}
