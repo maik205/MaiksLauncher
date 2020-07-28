@@ -9,10 +9,11 @@ namespace MaiksLauncher.Core
 {
     public class ReadWrite
     {
+        private static readonly string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
         public static string ReadAToken()
         {
             string aToken = "";
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             try
             {
                 StreamReader sr = new StreamReader(path + @"ATokenNonEncrypted");
@@ -27,7 +28,7 @@ namespace MaiksLauncher.Core
         }
         public static string ReadEncryptedAToken(string decryptPass)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             string ATokenDecrypted = "";
             try
             {
@@ -52,7 +53,7 @@ namespace MaiksLauncher.Core
         public static string ReadConfig(int ConfigIndex)
         {
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             if (File.Exists(path + @"config.mcf") == false)
             {
                 Directory.CreateDirectory(path);
@@ -113,7 +114,7 @@ namespace MaiksLauncher.Core
         // i forgot about sessions lol
         public static void WriteAToken(string aToken ,bool isEncrypted)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             if (File.Exists(path + @"ATokenNonEncrypted.mat") == false || Directory.Exists(path) == false && isEncrypted == false)
             {
                 Directory.CreateDirectory(path);
@@ -126,7 +127,7 @@ namespace MaiksLauncher.Core
         }
         public static void WriteAToken(string aToken, bool isEncrypted, string pass)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             if (File.Exists(path + @"ATokenEncrypted.mat") == false || Directory.Exists(path) == false && isEncrypted == true)
             {
                 Directory.CreateDirectory(path);
@@ -140,7 +141,7 @@ namespace MaiksLauncher.Core
 
         public static void WriteConfigByLine(string cfg, int index)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             try
             {
                 string[] AllSettings = File.ReadAllLines(path + @"config.mcf");
@@ -203,7 +204,7 @@ namespace MaiksLauncher.Core
 
         public static void SaveVersionList(string[] verListArray)
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
+             
             if (File.Exists(path + @"VersionList.mvl") == false)
             {
                 Directory.CreateDirectory(path);
@@ -218,16 +219,34 @@ namespace MaiksLauncher.Core
 
         public static string[] LoadVersionList()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\";
-            string[] vlist = new string[File.ReadAllLines(path + @"VersionList.mvl").Length];
-            int index = 0;
-            foreach (string line in File.ReadAllLines(path + @"VersionList.mvl"))
+            
+            if (File.Exists(path + @"VersionList.mvl"))
             {
-                vlist[index] = line;
-                index++;
+                string[] vlist = new string[File.ReadAllLines(path + @"VersionList.mvl").Length];
+                int index = 0;
+                foreach (string line in File.ReadAllLines(path + @"VersionList.mvl"))
+                {
+                    vlist[index] = line;
+                    index++;
+                }
+                return vlist;
             }
-            return vlist;
+            else 
+            {
+                string[] a = { };
+                return a;
+            }
+            
         }
         
+        public static void WriteConfigV2(int ConfigIndex, string Config)
+        {
+            string ConfigLine = File.ReadAllLines(path + @"config.mcf")[ConfigIndex];
+
+            foreach (char currentchar in ConfigLine)
+            {
+                
+            }
+        }
     }
 }

@@ -36,7 +36,6 @@
                  IsIndeterminate="True"
                  x:Name="Progress" Margin="0,397,283,0" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black" />
                 <TextBlock x:Name="LoginStatus" HorizontalAlignment="Left" Height="47" Margin="92,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
-                <Button Content="Old look?" HorizontalAlignment="Left" Margin="237,359,0,0" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Foreground="Black" Height="43" Width="123" Click="OldLookClick"/>
 
             </Grid>
         </StackPanel>

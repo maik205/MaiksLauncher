@@ -1,4 +1,4 @@
-﻿<Window x:Class="MaiksLauncher.MainWindowNew"
+﻿<Window x:Class="MaiksLauncher.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -74,7 +74,7 @@
         <ImageBrush ImageSource="/img.png" Stretch="UniformToFill"/>
     </Window.Background>
 
-    <Grid x:Name="MainWindow" MouseDown="MainWindow_MouseDown">
+    <Grid x:Name="Main" MouseDown="MainWindow_MouseDown">
         <Grid.Background>
             <ImageBrush/>
         </Grid.Background>
@@ -128,7 +128,7 @@
                 Height="24"
                 Width="24" />
         </Button>
-        <Rectangle HorizontalAlignment="Left" Height="2" VerticalAlignment="Top" Width="952" Fill="White" Grid.Row="1" Margin="0,1,0,0" Grid.ColumnSpan="2"/>
+        <Rectangle HorizontalAlignment="Left" Height="2" VerticalAlignment="Bottom" Width="952" Fill="White" Grid.Row="1" Margin="0,0,0,442" Grid.ColumnSpan="2"/>
         <Button
             x:Name="HomeButton"
             Style="{StaticResource MaterialDesignFloatingActionButton}"
@@ -161,7 +161,7 @@
             <Button Content="Submit" HorizontalAlignment="Left" Height="30" Margin="528,325,0,0" VerticalAlignment="Top" Width="101" IsDefault="True" Click="humanTestSubmit" Background="#FF292929" BorderBrush="{x:Null}"/>
             <Label Content="If empty, enter mine in the text box" HorizontalAlignment="Left" Height="23" Margin="258,297,0,0" VerticalAlignment="Top" Width="292" Foreground="#DDFFFFFF"/>
         </Grid>
-        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
+        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952" d:IsHidden="True">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="229*"/>
                 <ColumnDefinition Width="247*"/>
@@ -258,7 +258,8 @@
         </Grid>
         <Grid x:Name="PlayerInfo" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="445" Grid.Row="1" VerticalAlignment="Center" Width="952" Visibility="Hidden">
             <TextBlock HorizontalAlignment="Left" Height="204" Margin="198,19,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="604" Foreground="White" FontSize="18" FontFamily="Corbel"><Run Text="Your name is " Foreground="White" FontSize="48"/> <Run x:Name="PlayerInfoName" FontSize="48" FontWeight="Bold"/> <LineBreak/><Run Text="           Access token: "/><Run x:Name="PlayerInfoAToken"/><LineBreak/><Run Text="           UUID: "/><Run x:Name="PlayerInfoUUID"/><LineBreak/><Run Text="           Client token: "/><Run x:Name="PlayerInfoClientToken"/><LineBreak/><Run Text="           NameMC link: "/><Hyperlink Foreground="White" NavigateUri="{Binding url}" x:Name="nameMCLink">Click here</Hyperlink></TextBlock>
-            <Button x:Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent"  Height="50" Margin="640,288,0,0" VerticalAlignment="Top" Width="162" Click="SignOutClick" FontFamily="Segoe UI"/>
+            <Button x:Name="SignOutButton" Content="Sign out" HorizontalAlignment="Left" Background="Transparent" BorderBrush="Transparent"  Height="50" Margin="640,283,0,0" VerticalAlignment="Top" Width="162" Click="SignOutClick" FontFamily="Segoe UI"/>
+            <Button Content="Change account" HorizontalAlignment="Left" Height="50" Margin="457,283,0,0" VerticalAlignment="Top" Width="162" Background="{x:Null}" BorderBrush="{x:Null}"/>
         </Grid>
 
 

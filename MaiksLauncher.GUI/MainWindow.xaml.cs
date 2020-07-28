@@ -29,11 +29,11 @@ namespace MaiksLauncher
     /// <summary>
     /// Interaction logic for MainWindowNew.xaml
     /// </summary>
-    public partial class MainWindowNew : Window
+    public partial class MainWindow : Window
     {
         public MSession MainSession;
 
-        public MainWindowNew(MSession session)
+        public MainWindow(MSession session)
         {
             MainSession = session;
             InitializeComponent();
@@ -122,36 +122,47 @@ namespace MaiksLauncher
         }
         private void windowActive(object sender, RoutedEventArgs e)
         {
-            
-            LaunchProgress.Opacity = 0;
-            username.Text = " " + MainSession.Username;
-            string config = ReadWrite.ReadConfig(1);
-            var th = new Thread(new ThreadStart(delegate
-            {
-                
-                Application.Current.Dispatcher.Invoke(delegate
+            try {
+
+                LaunchProgress.Opacity = 0;
+                username.Text = " " + MainSession.Username;
+                string config = ReadWrite.ReadConfig(1);
+                var th = new Thread(new ThreadStart(delegate
                 {
-                    loadInfo();
-                });
-                getStatus();
+
+                    Application.Current.Dispatcher.Invoke(delegate
+                    {
+                        loadInfo();
+                    });
+                    getStatus();
+                }));
+
+                th.Start();
+                PlayerInfoName.Text = MainSession.Username;
+                if (ifOfflineMode == false)
+                {
+                    PlayerInfoAToken.Text = MainSession.AccessToken;
+                    PlayerInfoUUID.Text = MainSession.UUID;
+                    PlayerInfoClientToken.Text = MainSession.ClientToken;
+                }
+                else
+                {
+                    PlayerInfoAToken.Text = "(Offline)";
+                    PlayerInfoUUID.Text = "(Offline)";
+                    PlayerInfoClientToken.Text = "(Offline)";
+                }
+
+                }
+            catch (Exception error)
+            {
+                StreamWriter sw = File.CreateText(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + @"\MaiksLauncher\log.txt");
+                sw.Write(error.Message);
+                sw.Close();
+                MessageBox.Show("Error logged in the Maikslauncher's folder.");
                 
-            }));
-            th.Start();
-            PlayerInfoName.Text = MainSession.Username;
-            if (ifOfflineMode == false)
-            {
-                PlayerInfoAToken.Text = MainSession.AccessToken;
-                PlayerInfoUUID.Text = MainSession.UUID;
-                PlayerInfoClientToken.Text = MainSession.ClientToken;
             }
-            else
-            {
-                PlayerInfoAToken.Text = "(Offline)";
-                PlayerInfoUUID.Text = "(Offline)";
-                PlayerInfoClientToken.Text = "(Offline)";
             }
-            
-        }
+       
         
         private void Launcher_FileChanged(DownloadFileChangedEventArgs e)
         {
@@ -429,6 +440,7 @@ namespace MaiksLauncher
         private void saveInfo()
         {
             ReadWrite.WriteConfigByLine(MaxMemSlider.Value.ToString(), 1);
+            ReadWrite.WriteConfigByLine(versionList.SelectedValue.ToString(), 2);
             ReadWrite.WriteConfigByLine(CustomArgsBox.Text,4);
             ReadWrite.WriteConfigByLine(JavaPathBox.Text, 3);
             ReadWrite.WriteConfigByLine(ServerIPBox.Text, 9);
@@ -436,7 +448,6 @@ namespace MaiksLauncher
             ReadWrite.WriteConfigByLine(ScreenWidthBox.Text,10);
             
         }
-
         private void loadInfo()
         {
             string MaxMem = ReadWrite.ReadConfig(2);
@@ -474,13 +485,13 @@ namespace MaiksLauncher
             int MTypeAmount = 0;
             foreach (var profile in launcher.Profiles)
             {
-                if (profile.MType == MProfileType.Release) { MTypeAmount++; }
+                if (profile.MType == MProfileType.Release || profile.MType == MProfileType.Custom) { MTypeAmount++; }
             }
-            string[] vers = new string[MTypeAmount];// this code will block ui, so it should run in thread
+            string[] vers = new string[MTypeAmount];
             int index = 0;
             foreach (var profile in launcher.Profiles)
             {
-                if (profile.MType == MProfileType.Release) { vers[index] = profile.Name; index++; }
+                if (profile.MType == MProfileType.Release || profile.MType == MProfileType.Custom) { vers[index] = profile.Name; index++; }
                 
             }
 
@@ -507,7 +518,7 @@ namespace MaiksLauncher
 
         private void ClearClick(object sender, RoutedEventArgs e)
         {
-            versionList.Items.Remove(versionList.SelectedIndex);
+            versionList.Items.Remove(versionList.SelectedItem);
         }
     }
 

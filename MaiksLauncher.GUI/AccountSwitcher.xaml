@@ -1,0 +1,30 @@
+﻿<Window x:Class="MaiksLauncher.GUI.Window1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaiksLauncher.GUI"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="Window1" Height="304" Width="400">
+    <Grid>
+        <ListBox x:Name="AccountList" Margin="0,36,0,35"/>
+        <Button ToolTip="Clear selected account" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="365,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Close"/>
+        </Button>
+        <Button ToolTip="Clear selected account" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="335,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Plus"/>
+        </Button>
+        <Button ToolTip="Clear selected account" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="305,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Tick"/>
+        </Button>
+        <TextBlock HorizontalAlignment="Center" Height="36" TextWrapping="Wrap" VerticalAlignment="Top" Width="400" TextAlignment="Left" FontSize="24" FontFamily="Segoe UI" Text=" Account manager" FontWeight="Normal"/>
+
+    </Grid>
+</Window>
