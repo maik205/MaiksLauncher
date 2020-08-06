@@ -67,7 +67,7 @@ namespace MaiksLauncher
 
         private void LaunchClick(object sender, RoutedEventArgs e)
         {
-            LaunchProgress.Opacity = 100;
+            LaunchProgress.Visibility = Visibility.Visible;
             var th = new Thread(new ThreadStart(delegate
             {
                 string selectedver = "";

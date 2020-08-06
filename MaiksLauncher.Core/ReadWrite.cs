@@ -238,15 +238,14 @@ namespace MaiksLauncher.Core
             }
             
         }
-        
-        public static void WriteConfigV2(int ConfigIndex, string Config)
+        static StreamWriter sw = null;
+        public void TextLocker(string path)
         {
-            string ConfigLine = File.ReadAllLines(path + @"config.mcf")[ConfigIndex];
-
-            foreach (char currentchar in ConfigLine)
-            {
-                
-            }
+            sw = new StreamWriter(path);
+        }
+        public void Unlock()
+        {
+            sw.Close();
         }
     }
 }

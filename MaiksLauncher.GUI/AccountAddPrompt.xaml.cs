@@ -9,23 +9,28 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MaiksLauncher.Core;
+using CmlLib.Core;
 
 namespace MaiksLauncher.GUI
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for AccountAddPrompt.xaml
     /// </summary>
-    public partial class AccountSwitcher : Window
+    public partial class AccountAddPrompt : Window
     {
-        public AccountSwitcher(User u)
+        public AccountAddPrompt()
         {
             InitializeComponent();
         }
-        public AccountSwitcher()
+
+        private void Login(object sender, RoutedEventArgs e)
         {
-            InitializeComponent();
+            
         }
-        
+
+        private void Cancel(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

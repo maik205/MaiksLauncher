@@ -161,7 +161,7 @@
             <Button Content="Submit" HorizontalAlignment="Left" Height="30" Margin="528,325,0,0" VerticalAlignment="Top" Width="101" IsDefault="True" Click="humanTestSubmit" Background="#FF292929" BorderBrush="{x:Null}"/>
             <Label Content="If empty, enter mine in the text box" HorizontalAlignment="Left" Height="23" Margin="258,297,0,0" VerticalAlignment="Top" Width="292" Foreground="#DDFFFFFF"/>
         </Grid>
-        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952" d:IsHidden="True">
+        <Grid x:Name="Home" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="444" Grid.Row="1" VerticalAlignment="Center" Width="952">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="229*"/>
                 <ColumnDefinition Width="247*"/>
@@ -175,7 +175,7 @@
                 <ComboBoxItem Foreground="White" Content="Choose the version"/>
             </ComboBox>
             <Label x:Name="LaunchLog" Content="" HorizontalAlignment="Left" Margin="131,393,0,0" VerticalAlignment="Top" Width="248"/>
-            <ProgressBar x:Name="LaunchProgress" Value="0" Foreground="White" HorizontalAlignment="Left" Height="1" Margin="132,420,0,0" VerticalAlignment="Top" Width="247" materialDesign:TransitionAssist.DisableTransitions="True" RenderTransformOrigin="0.5,0.5" Opacity="0">
+            <ProgressBar x:Name="LaunchProgress" Value="0" Foreground="White" HorizontalAlignment="Left" Height="1" Margin="132,420,0,0" VerticalAlignment="Top" Width="247" materialDesign:TransitionAssist.DisableTransitions="True" RenderTransformOrigin="0.5,0.5" Visibility="Hidden">
                 <ProgressBar.RenderTransform>
                     <TransformGroup>
                         <ScaleTransform ScaleY="-1"/>
