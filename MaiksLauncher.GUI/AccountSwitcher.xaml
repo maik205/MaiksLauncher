@@ -1,0 +1,47 @@
+﻿<Window x:Class="MaiksLauncher.GUI.AccountSwitcher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MaiksLauncher.GUI"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal" 
+        TextOptions.TextRenderingMode="Auto"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        mc:Ignorable="d"
+        Title="Window1" Height="304" Width="400" WindowStyle="None">
+    <Grid>
+        <ListBox x:Name="AccountList" Margin="0,36,0,35"/>
+        <Button ToolTip="Clear selected account" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="365,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Close"/>
+        </Button>
+        <Button ToolTip="Add a new account" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="335,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Plus"/>
+        </Button>
+        <Button ToolTip="Verify selected account" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="305,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Tick"/>
+        </Button>
+        <TextBlock HorizontalAlignment="Left" TextWrapping="Wrap" Width="188" TextAlignment="Left" FontSize="24" FontFamily="Calibri" Text=" Accounts:" FontWeight="Normal" Margin="0,0,0,268"/>
+        <Grid Height="36" Margin="188,0,0,0" VerticalAlignment="Top">
+            <Button ToolTip="Close this window" Content="{materialDesign:PackIcon Kind=Close}" Margin="154,4,0,0" VerticalAlignment="Top" Height="25" HorizontalAlignment="Left" Width="50" RenderTransformOrigin="0.5,0.5">
+                <Button.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.735"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0.237"/>
+                    </TransformGroup>
+                </Button.RenderTransform>
+
+
+            </Button>
+        </Grid>
+        <Button ToolTip="Edit account info" Style="{StaticResource MaterialDesignFloatingActionMiniButton}" HorizontalAlignment="Left" Height="25" Margin="275,258,0,0" VerticalAlignment="Top" Width="25">
+            <materialDesign:PackIcon Kind="Pencil"/>
+        </Button>
+
+    </Grid>
+</Window>

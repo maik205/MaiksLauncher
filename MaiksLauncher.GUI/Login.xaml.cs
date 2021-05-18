@@ -56,7 +56,7 @@ namespace MaiksLauncher
                         LoginStatus.Text = "Successful login! Transfering you to the main window...";
                         this.Hide();
 
-                        MainWindowNew mw = new MainWindowNew(Session);
+                        MainWindow mw = new MainWindow(Session);
                         mw.Show();
                     }));
                 }
@@ -76,8 +76,8 @@ namespace MaiksLauncher
                 Regex r = new Regex("^[a-zA-Z0-9_]+$");
                 if (r.IsMatch(Email.Text))
                 {
-                    MainWindowNew.ifOfflineMode = (bool)ifOffline.IsChecked;
-                    MainWindowNew mw = new MainWindowNew(MSession.GetOfflineSession(Email.Text));
+                    MainWindow.ifOfflineMode = (bool)ifOffline.IsChecked;
+                    MainWindow mw = new MainWindow(MSession.GetOfflineSession(Email.Text));
                     mw.Show();
                     this.Close();
                 }
@@ -114,7 +114,7 @@ namespace MaiksLauncher
             var session = login.TryAutoLogin();
             if (session.Result == MLoginResult.Success)
             {
-                MainWindowNew mw = new MainWindowNew(session);
+                MainWindow mw = new MainWindow(session);
                 this.Close();
 
                 mw.Show();
@@ -139,7 +139,7 @@ namespace MaiksLauncher
                     Application.Current.Dispatcher.Invoke((Action)delegate
                     {
                         {
-                            MainWindowNew mw = new MainWindowNew(session);
+                            MainWindow mw = new MainWindow(session);
                             mw.Show();
                             this.Close();
                         }
@@ -156,13 +156,6 @@ namespace MaiksLauncher
                 }
             }));
             th.Start();
-        }
-
-        private void OldLookClick(object sender, RoutedEventArgs e)
-        {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
         }
     }
 }

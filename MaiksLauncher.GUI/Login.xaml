@@ -21,7 +21,6 @@
                     Style="{StaticResource MaterialDesignOutlinedTextFieldTextBox}"
                     materialDesign:HintAssist.Hint="Email" RenderTransformOrigin="0.5,0.5" Opacity="1"/>
                 <PasswordBox x:Name="userPassword"
-                    
                     Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}"
                     materialDesign:HintAssist.Hint="Password" Margin="15,214,15,225" />
                 <Image HorizontalAlignment="Left" Height="30" Margin="10,283,0,0" VerticalAlignment="Top" Width="30" Source="/Photos/i.png" RenderTransformOrigin="0.367,0.801"/>
@@ -36,7 +35,6 @@
                  IsIndeterminate="True"
                  x:Name="Progress" Margin="0,397,283,0" VerticalAlignment="Top" HorizontalAlignment="Right" Foreground="Black" />
                 <TextBlock x:Name="LoginStatus" HorizontalAlignment="Left" Height="47" Margin="92,407,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="131"/>
-                <Button Content="Old look?" HorizontalAlignment="Left" Margin="237,359,0,0" VerticalAlignment="Top" Background="Transparent" BorderBrush="Transparent" Foreground="Black" Height="43" Width="123" Click="OldLookClick"/>
 
             </Grid>
         </StackPanel>

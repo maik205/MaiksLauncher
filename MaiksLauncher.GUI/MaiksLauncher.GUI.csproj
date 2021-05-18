@@ -10,7 +10,6 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="2020-05-23_11.05.58.png" />
     <None Remove="2020-05-23_11.06.16.png" />
@@ -35,7 +34,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.9.10" />
     <PackageReference Include="ChangFeng.MojangSharpCore" Version="0.0.1" />
     <PackageReference Include="CmlLib.Core" Version="2.0.2" />
     <PackageReference Include="MaterialDesignThemes" Version="3.1.3" />
@@ -60,23 +58,4 @@
       <Resource Include="test1.png" />
       <Resource Include="wynncraftLogo.png" />
     </ItemGroup>
-
-
-    <ItemGroup>
-      <Reference Update="dotMCLauncher.Profiling">
-        <HintPath>mcLib\dotMCLauncher.Profiling.dll</HintPath>
-      </Reference>
-      <Reference Update="dotMCLauncher.Resourcing">
-        <HintPath>mcLib\dotMCLauncher.Resourcing.dll</HintPath>
-      </Reference>
-      <Reference Update="dotMCLauncher.Tests">
-        <HintPath>mcLib\dotMCLauncher.Tests.dll</HintPath>
-      </Reference>
-      <Reference Update="dotMCLauncher.Versioning">
-        <HintPath>mcLib\dotMCLauncher.Versioning.dll</HintPath>
-      </Reference>
-      <Reference Update="dotMCLauncher.Yggdrasil">
-        <HintPath>mcLib\dotMCLauncher.Yggdrasil.dll</HintPath>
-		</Reference>
-		</ItemGroup>
 </Project>
